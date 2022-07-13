@@ -1,7 +1,9 @@
 package dev.practice.ad.interfaces.web;
 
-import dev.practice.ad.application.ad.AppFacade;
+import dev.practice.ad.application.AppFacade;
 import dev.practice.ad.domain.app.AppCommand;
+import dev.practice.ad.domain.app.AppInfo;
+import dev.practice.ad.interfaces.web.form.AppForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -20,16 +24,15 @@ public class AppController {
 
     private final AppFacade appFacade;
 
-    @GetMapping("/home")
-    public String viewHome(){
-        return "home";
-    }
 
     @GetMapping
     public String listApps(Model model){
         log.info("{listApps} list app ");
-
-        model.addAttribute("appId", "aaa");
+        List<AppInfo> result = appFacade.listApp();
+        for (AppInfo appInfo : result) {
+            log.info(appInfo.toString());
+        }
+        model.addAttribute("apps", result);
         return "app/listApp";
     }
 

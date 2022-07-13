@@ -27,13 +27,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/">홈</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/app">app 관리</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/meterial">소재 관리</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/strategy">정책관리</a>
         </li>
       </ul>
@@ -46,10 +46,10 @@
     <div class="col-sm-3">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="/app">목록관리</a>
+          <a class="nav-link active" href="/strategy">목록관리</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/app/new">등록</a>
+          <a class="nav-link" href="/strategy/new">등록</a>
         </li>
       </ul>
       <br>
@@ -73,14 +73,12 @@
             </thead>
             <tbody>
             <form action="/app/contents" method="post">
-            <tr th:each="app : ${apps}">
-              <td>
-                <a th:href="@{'/content-service/'+${app.appId}+'/contents'}" th:text="${app.appId}"/></a>
-              </td>
-              <td th:text="${app.appName}"></td>
-              <td th:text="${app.appKey}"></td>
-              <td th:text="${app.getStatus()}"></td>
-              <td th:text="${app.getCreated_at()}"></td>
+            <tr th:each="strategy : ${strategyInfo}">
+              <td th:text="${strategy.measuringScreenAreaX}"></td>
+              <td th:text="${strategy.measuringScreenAreaY}"></td>
+              <td th:text="${strategy.measuringScreenAreaWidth}"></td>
+              <td th:text="${strategy.measuringScreenAreaHeight}"></td>
+              <td th:text="${strategy.maxMeasuringCount}"></td>
             </tr>
             </form>
             </tbody>

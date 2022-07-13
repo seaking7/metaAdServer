@@ -1,4 +1,4 @@
-package dev.practice.ad.application.ad;
+package dev.practice.ad.application;
 
 import dev.practice.ad.domain.notification.NotificationService;
 import dev.practice.ad.domain.ad.AdRequestCommand;

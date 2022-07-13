@@ -1,6 +1,6 @@
 package dev.practice.ad.interfaces.api;
 
-import dev.practice.ad.application.ad.AdRequestFacade;
+import dev.practice.ad.application.AdRequestFacade;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

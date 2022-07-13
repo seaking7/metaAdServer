@@ -1,4 +1,4 @@
-package dev.practice.ad.interfaces.web;
+package dev.practice.ad.interfaces.web.form;
 
 import dev.practice.ad.domain.app.AppCommand;
 import lombok.Data;

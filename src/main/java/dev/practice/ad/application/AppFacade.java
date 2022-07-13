@@ -1,4 +1,4 @@
-package dev.practice.ad.application.ad;
+package dev.practice.ad.application;
 
 import dev.practice.ad.domain.ad.AdRequestCommand;
 import dev.practice.ad.domain.ad.AdRequestInfo;
@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -20,6 +22,11 @@ public class AppFacade {
     public AppInfo registerApp(AppCommand command) {
         var appInfo = appService.registerApp(command);
         return appInfo;
+    }
+
+    public List<AppInfo> listApp(){
+        List<AppInfo> result = appService.listApp();
+        return result;
     }
 
 }

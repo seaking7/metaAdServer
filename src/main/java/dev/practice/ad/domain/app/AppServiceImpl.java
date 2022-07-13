@@ -3,8 +3,12 @@ package dev.practice.ad.domain.app;
 import dev.practice.ad.domain.ad.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -19,6 +23,12 @@ public class AppServiceImpl implements AppService {
         var initApp = command.toEntity();
         App returnApp = appStore.store(initApp);
         return new AppInfo(returnApp);
+    }
+
+    @Override
+    public List<AppInfo> listApp() {
+        List<AppInfo> result = appStore.listApp();
+        return result;
     }
 
 //    @Override
