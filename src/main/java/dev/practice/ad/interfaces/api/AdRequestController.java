@@ -1,12 +1,12 @@
-package dev.practice.ad.interfaces.ad;
+package dev.practice.ad.interfaces.api;
 
 import dev.practice.ad.application.ad.AdRequestFacade;
-import dev.practice.ad.common.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -54,6 +54,12 @@ public class AdRequestController {
         log.info("report appId:{}, getAdMediaType:{}, getAdMediaType:{}", report.getAppId(), report.getAdMediaType(), report.getAdMediaType());
         String returnStr = "OK";
         return returnStr;
+    }
+
+    @GetMapping("/test")
+    public void testHeader(@RequestHeader Map<String, Object> requestHeader){
+        log.info(requestHeader.toString());
+
     }
 
 

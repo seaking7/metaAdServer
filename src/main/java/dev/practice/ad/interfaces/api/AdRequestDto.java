@@ -1,13 +1,9 @@
-package dev.practice.ad.interfaces.ad;
+package dev.practice.ad.interfaces.api;
 
-import dev.practice.ad.domain.ad.AdRequestCommand;
-import dev.practice.ad.domain.ad.AdRequestInfo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 public class AdRequestDto {
