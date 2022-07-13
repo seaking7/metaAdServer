@@ -1,4 +1,4 @@
-package dev.practice.ad.domain.ad;
+package dev.practice.ad.domain.ads;
 
 import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.common.util.TokenGenerator;
@@ -16,17 +16,20 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "adrequest")
-public class AdRequest extends AbstractEntity {
-    private static final String PREFIX_PARTNER = "ptn_";
+@Table(name = "m_ads")
+public class Ads extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String partnerToken;
-    private String partnerName;
-    private String businessNo;
-    private String email;
+    private String adsId;
+    private String adsName;
+    private String materialUrl;
+
+    private AdsType adsType;
+    private String adsWidth;
+    private String adsHeight;
+
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -38,16 +41,21 @@ public class AdRequest extends AbstractEntity {
         private final String description;
     }
 
-    @Builder
-    public AdRequest(String partnerName, String businessNo, String email) {
-        if (StringUtils.isEmpty(partnerName)) throw new InvalidParamException("empty partnerName");
-        if (StringUtils.isEmpty(businessNo)) throw new InvalidParamException("empty businessNo");
-        if (StringUtils.isEmpty(email)) throw new InvalidParamException("empty email");
+    @Getter
+    @RequiredArgsConstructor
+    public enum AdsType {
+        IMAGE("이미지"), VIDEO("동영상");
+        private final String description;
+    }
 
-        this.partnerToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_PARTNER);
-        this.partnerName = partnerName;
-        this.businessNo = businessNo;
-        this.email = email;
+    @Builder
+    public Ads(String adsId, String adsName, String materialUrl) {
+        if (StringUtils.isEmpty(adsId)) throw new InvalidParamException("empty adsId");
+
+        this.adsId = adsId;
+        this.adsName = adsName;
+        this.materialUrl = materialUrl;
+        this.adsType = AdsType.IMAGE;
         this.status = Status.ENABLE;
     }
 

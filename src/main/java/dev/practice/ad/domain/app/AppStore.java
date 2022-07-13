@@ -7,4 +7,7 @@ public interface AppStore {
     App store(App initApp);
 
     List<AppInfo> listApp();
+
+
+    App getAppById(Long id);
 }

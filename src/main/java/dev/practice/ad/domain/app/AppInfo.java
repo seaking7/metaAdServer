@@ -1,6 +1,5 @@
 package dev.practice.ad.domain.app;
 
-import dev.practice.ad.domain.ad.AdRequest;
 import lombok.Getter;
 import lombok.ToString;
 

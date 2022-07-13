@@ -1,6 +1,5 @@
 package dev.practice.ad.interfaces.api;
 
-import dev.practice.ad.application.AdRequestFacade;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/meta/v1")
 public class AdRequestController {
-    private final AdRequestFacade adRequestFacade;
 
     @GetMapping("/init")
     public String getInitAd(@ModelAttribute AdRequestDto.AdInit adInit){

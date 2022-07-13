@@ -29,7 +29,7 @@ public class StrategyStoreImpl implements StrategyStore {
     public Strategy upsert(Strategy strategy) {
 //        if (StringUtils.isEmpty(app.getAppId())) throw new InvalidParamException("app.getAppId()");
 //        if (app.getStatus() == null) throw new InvalidParamException("app.getStatus()");
-        Strategy saved = strategyRepository.findAll().stream().findFirst().orElse(null);
+        Strategy saved = strategyRepository.findAll().stream().findFirst().orElse(new Strategy());
         saved.setMeasuringScreenAreaX(strategy.getMeasuringScreenAreaX());
         saved.setMeasuringScreenAreaY(strategy.getMeasuringScreenAreaY());
         saved.setMeasuringScreenAreaWidth(strategy.getMeasuringScreenAreaWidth());

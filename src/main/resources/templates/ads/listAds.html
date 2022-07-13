@@ -30,10 +30,10 @@
         <li class="nav-item">
           <a class="nav-link" href="/app">app 관리</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/meterial">소재 관리</a>
-        </li>
         <li class="nav-item active">
+          <a class="nav-link" href="/ads">애즈 관리</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/strategy">정책관리</a>
         </li>
       </ul>
@@ -46,10 +46,10 @@
     <div class="col-sm-3">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="/strategy">목록관리</a>
+          <a class="nav-link active" href="/ads">목록관리</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/strategy/new">등록</a>
+          <a class="nav-link" href="/ads/new">등록</a>
         </li>
       </ul>
       <br>
@@ -57,8 +57,8 @@
 
     </div>
     <div class="col-sm-8">
-      <h2>app 정보</h2>
-      <h5>등록된 App 리스트</h5>
+      <h2>애즈 정보</h2>
+      <h5>등록된 애즈 리스트</h5>
       <div class="container">   <!-- container -->
         <div>
           <table class="table table-bordered">
@@ -66,19 +66,20 @@
             <tr>
               <th>ID</th>
               <th>이름</th>
-              <th>appKey</th>
+              <th>소재경로</th>
               <th>상태</th>
-              <th>입력일</th>
             </tr>
             </thead>
             <tbody>
             <form action="/app/contents" method="post">
-            <tr th:each="strategy : ${strategyInfo}">
-              <td th:text="${strategy.measuringScreenAreaX}"></td>
-              <td th:text="${strategy.measuringScreenAreaY}"></td>
-              <td th:text="${strategy.measuringScreenAreaWidth}"></td>
-              <td th:text="${strategy.measuringScreenAreaHeight}"></td>
-              <td th:text="${strategy.maxMeasuringCount}"></td>
+            <tr th:each="ad : ${ads}">
+              <td>
+<!--                <a th:href="@{'/content-service/'+${app.appId}+'/contents'}" th:text="${app.appId}"/></a>-->
+                <a th:href="@{${ad.materialUrl}}" th:text="${ad.adsId}"/></a>
+              </td>
+              <td th:text="${ad.adsName}"></td>
+              <td th:text="${ad.materialUrl}"></td>
+              <td th:text="${ad.status}"></td>
             </tr>
             </form>
             </tbody>

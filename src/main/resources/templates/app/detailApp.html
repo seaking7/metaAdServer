@@ -26,7 +26,7 @@
           <a class="nav-link" href="/app">app 관리</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/meterial">소재 관리</a>
+          <a class="nav-link" href="/ads">애즈 관리</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/strategy">정책관리</a>
@@ -44,10 +44,10 @@
     <div class="col-sm-3">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link"  href="/content-service/contents">목록관리</a>
+          <a class="nav-link" href="/app">목록관리</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/content-service/contents/new">등록</a>
+          <a class="nav-link" href="/app/new">등록</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active disabled" >상세</a>
@@ -55,36 +55,20 @@
       </ul>
       <br>
       <br>
-      <hr class="d-sm-none">
-      <p><h5 class="bg-success text-white">About Server</h5></p>
-      <h6>IP : <span th:text="${server_address}"></span></h6>
-      <h6>PORT : <span th:text="${server_port}"></span></h6>
-      <h6>SERVICE: <span th:text="${server_service}"></span></h6>
+
     </div>
     <div class="col-sm-8">
-      <h2>컨텐츠 정보</h2>
-      <h5>content-service의 Maria DB 내용 조회</h5>
+      <h2>APP 정보</h2>
+      <h5>App Key 내용 조회</h5>
       <div class="container">   <!-- container -->
-        <form action="/content-service/contents/delete" method="post">
+        <form action="/app/delete" method="post">
           <table>
             <tbody>
             <tr>
-              <td width="100"> 아이디 : </td><td width="600"><input type="text" readonly class="form-control" id="contentId" name="contentId" th:value="${contentId}"></td>
+              <td width="100"> 아이디 : </td><td width="600"><input type="text" readonly class="form-control" id="appId" name="appId" th:value="${app.appId}"></td>
             </tr>
             <tr>
-              <td> 이름 : </td><td><input type="text" readonly class="form-control" id="contentName" name="contentName" th:value="${contentName}"></td>
-            </tr>
-            <tr>
-              <td> 경로 : </td><td><input type="text" readonly class="form-control" id="url" name="url" th:value="${url}"></td>
-            </tr>
-            <tr>
-              <td> 제작자 : </td><td><input type="text" readonly class="form-control"  id="creator" name="creator" th:value="${creator}"></td>
-            </tr>
-            <tr>
-              <td> CP : </td><td><input type="text" readonly class="form-control" id="cp" name="cp" th:value="${cp}"></td>
-            </tr>
-            <tr>
-              <td> 카테고리 : </td><td><input type="text" readonly class="form-control"  id="category" name="category" th:value="${category}"></td>
+              <td> appKey : </td><td><input type="text" readonly class="form-control" id="url" name="appKey" th:value="${app.appKey}"></td>
             </tr>
             </tbody>
           </table>

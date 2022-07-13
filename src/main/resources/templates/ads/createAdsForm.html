@@ -19,10 +19,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">홈</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/app">app 관리</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/ads">애즈 관리</a>
                 </li>
                 <li class="nav-item">
@@ -39,10 +39,10 @@
         <div class="col-sm-3">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="/app">목록관리</a>
+                    <a class="nav-link" href="/ads">목록관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#/app/new">등록</a>
+                    <a class="nav-link active" href="#/ads/new">등록</a>
                 </li>
             </ul>
             <br>
@@ -51,19 +51,35 @@
 
         </div>
         <div class="col-sm-8">
-            <h2>app 신규등록</h2>
-            <h5>사용할 App을 등록합니다.</h5>
+            <h2>애즈 신규등록</h2>
+            <h5>사용할 애즈를 등록합니다.</h5>
             <div class="container">   <!-- container -->
-                <form action="/app/new" method="post">
+                <form action="/ads/new" method="post">
                     <table>
                         <tbody>
                         <tr>
-                            <td width="100"> 앱아이디 : </td><td width="600">
-                            <input type="text" class="form-control" id="appId" name="appId" placeholder="아이디를 입력하세요"></td>
+                            <td width="100"> 애즈아이디 : </td><td width="600">
+                            <input type="text" class="form-control" id="adsId" name="adsId" placeholder="아이디를 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 앱이름 : </td><td width="600">
-                            <input type="text" class="form-control" id="appName" name="appName" placeholder="앱이름을 입력하세요"></td>
+                            <td width="100"> 애즈명 : </td><td width="600">
+                            <input type="text" class="form-control" id="adsName" name="adsName" placeholder="앱이름을 입력하세요"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> 소재경로 : </td><td width="600">
+                            <input type="text" class="form-control" id="materialUrl" name="materialUrl" placeholder="소재경로를 입력하세요"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> 소재타입 : </td><td width="600">
+                            <input type="text" class="form-control" id="adsType" name="adsType" placeholder="소재경로를 입력하세요"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> 소재넓이 : </td><td width="600">
+                            <input type="text" class="form-control" id="adsWidth" name="adsWidth" placeholder="소재경로를 입력하세요"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> 소재높이 : </td><td width="600">
+                            <input type="text" class="form-control" id="adsHeight" name="adsHeight" placeholder="소재경로를 입력하세요"></td>
                         </tr>
                         <tr>
                         </tr>
