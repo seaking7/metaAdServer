@@ -78,7 +78,7 @@
               </td>
               <td th:text="${app.appName}"></td>
               <td th:text="${app.getStatus()}"></td>
-              <td th:text="${app.getCreated_at()}"></td>
+              <td th:text="${#temporals.format(app.getCreated_at(), 'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
             </form>
             </tbody>

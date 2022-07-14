@@ -1,10 +1,9 @@
-package dev.practice.ad.infrastructure.ad;
+package dev.practice.ad.infrastructure.ads;
 
 import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.domain.ads.Ads;
 import dev.practice.ad.domain.ads.AdsInfo;
 import dev.practice.ad.domain.ads.AdsStore;
-import dev.practice.ad.domain.app.AppInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

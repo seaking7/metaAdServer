@@ -10,8 +10,9 @@ public class AdRequestDto {
 
 
     @Getter
+    @Setter
     @ToString
-    public static class AdInit {
+    public class AdInit {
         @NotEmpty(message = "appId 는 필수값입니다")
         private String appId;
         private String appKey;
@@ -23,7 +24,7 @@ public class AdRequestDto {
     @Getter
     @Setter
     @ToString
-    public static class AdRequest
+    public class AdRequest
     {
         @NotEmpty(message = "appId 는 필수값입니다")
         private String appId;
@@ -49,8 +50,9 @@ public class AdRequestDto {
     }
 
     @Getter
+    @Setter
     @ToString
-    public static class AdReport {
+    public class AdReport {
         @NotEmpty(message = "appId 는 필수값입니다")
         private String appId;
 

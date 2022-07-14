@@ -8,6 +8,8 @@ public class AdsInfo {
     private final String adsId;
     private final String adsName;
     private final String materialUrl;
+    private final String adsWidth;
+    private final String adsHeight;
     private final String status;
 
     public AdsInfo(Ads adRequest) {
@@ -15,6 +17,8 @@ public class AdsInfo {
         this.adsId = adRequest.getAdsId();
         this.adsName = adRequest.getAdsName();
         this.materialUrl = adRequest.getMaterialUrl();
+        this.adsWidth = adRequest.getAdsWidth();
+        this.adsHeight = adRequest.getAdsHeight();
         this.status = adRequest.getStatus().getDescription();
     }
 }

@@ -1,4 +1,4 @@
-package dev.practice.ad.infrastructure.ad;
+package dev.practice.ad.infrastructure.ads;
 
 import dev.practice.ad.domain.ads.Ads;
 import org.springframework.data.jpa.repository.JpaRepository;

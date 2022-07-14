@@ -79,7 +79,7 @@
                             <input type="text" class="form-control" id="measuringInterval" name="measuringInterval" th:value="${strategyInfo.measuringInterval}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 최종수정일 : </td><td width="600" th:text="${strategyInfo.getUpdatedAt()}"></td>
+                            <td width="100"> 최종수정일 : </td><td width="600" th:text="${#temporals.format(strategyInfo.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
                         </tr>
                         <tr>
                         </tr>

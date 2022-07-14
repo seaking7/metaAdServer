@@ -26,7 +26,6 @@ public class Ads extends AbstractEntity {
     private String adsName;
     private String materialUrl;
 
-    private AdsType adsType;
     private String adsWidth;
     private String adsHeight;
 
@@ -49,13 +48,14 @@ public class Ads extends AbstractEntity {
     }
 
     @Builder
-    public Ads(String adsId, String adsName, String materialUrl) {
+    public Ads(String adsId, String adsName, String materialUrl, String adsWidth, String adsHeight) {
         if (StringUtils.isEmpty(adsId)) throw new InvalidParamException("empty adsId");
 
         this.adsId = adsId;
         this.adsName = adsName;
         this.materialUrl = materialUrl;
-        this.adsType = AdsType.IMAGE;
+        this.adsWidth = adsWidth;
+        this.adsHeight = adsHeight;
         this.status = Status.ENABLE;
     }
 
