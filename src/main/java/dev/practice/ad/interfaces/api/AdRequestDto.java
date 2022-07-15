@@ -17,6 +17,7 @@ public class AdRequestDto {
         private String appId;
         private String appKey;
         private String macAddress;
+        private String uuid;
         private String sdkVersion;
     }
 

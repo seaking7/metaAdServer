@@ -15,7 +15,8 @@ public class AdRequestController {
 
     @GetMapping("/init")
     public String getInitAd(@ModelAttribute("AdRequestDto.AdInit") AdRequestDto.AdInit adInit){
-        log.info("init appId:{}, appKey:{}, macAddress:{}, sdkVersion:{}", adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getSdkVersion());
+        log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
+                adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
         String returnStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<init>\n" +
                 "    <uuid>a123456789</uuid>\n" +
