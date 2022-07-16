@@ -77,8 +77,8 @@
                 <a th:href="@{'/app/'+${app.getId()}}" th:text="${app.appId}"/></a>
               </td>
               <td th:text="${app.appName}"></td>
-              <td th:text="${app.getStatus()}"></td>
-              <td th:text="${#temporals.format(app.getCreated_at(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+              <td th:text="${app.status}"></td>
+              <td th:text="${#temporals.format(app.created_at, 'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
             </form>
             </tbody>

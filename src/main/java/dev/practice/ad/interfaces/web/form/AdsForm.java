@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class AdsForm {
+    private Long id;
     private String adsId;
     private String adsName;
     private String materialUrl;

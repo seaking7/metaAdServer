@@ -67,7 +67,6 @@
               <th>ID</th>
               <th>이름</th>
               <th>타입</th>
-              <th>상태</th>
               <th>등록일</th>
             </tr>
             </thead>
@@ -76,12 +75,12 @@
             <tr th:each="ad : ${ads}">
               <td>
 <!--                <a th:href="@{'/content-service/'+${app.appId}+'/contents'}" th:text="${app.appId}"/></a>-->
-                <a th:href="@{${ad.materialUrl}}" th:text="${ad.adsId}"/></a>
+<!--                <a th:href="@{${ad.materialUrl}}" th:text="${ad.adsId}"/></a>-->
+                <a th:href="@{'/ads/'+${ad.id}}" th:text="${ad.adsId}"/></a>
               </td>
               <td th:text="${ad.adsName}"></td>
-              <td th:text="${ad.getAdsType.getDescription()}"></td>
-              <td th:text="${ad.status}"></td>
-              <td th:text="${#temporals.format(ad.getUpdatedAt(), 'yyyy-MM-dd')}"></td>
+              <td th:text="${ad.adsType.description}"></td>
+              <td th:text="${#temporals.format(ad.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
             </form>
             </tbody>

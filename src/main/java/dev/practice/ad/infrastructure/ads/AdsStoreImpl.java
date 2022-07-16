@@ -33,4 +33,16 @@ public class AdsStoreImpl implements AdsStore {
                 .map(AdsInfo::new)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Ads getAdsById(Long id) {
+        return adsRepository.findById(id).get();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        adsRepository.deleteById(id);
+    }
+
+
 }

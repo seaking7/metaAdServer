@@ -6,6 +6,7 @@ import dev.practice.ad.domain.ads.AdsCommand;
 import dev.practice.ad.domain.ads.AdsInfo;
 import dev.practice.ad.domain.ads.AdsType;
 import dev.practice.ad.domain.app.AppCommand;
+import dev.practice.ad.domain.app.AppInfo;
 import dev.practice.ad.interfaces.web.form.AdsForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -68,5 +66,27 @@ public class AdsController {
         return "ads/createAdsForm";
     }
 
+
+    @GetMapping("/{id}")
+    public String detailAds(@PathVariable Long id, Model model){
+        AdsInfo result = adsFacade.getAdsById(id);
+
+        if(result.getAdsType().toString().equals("IMAGE"))
+            log.info("-------IMAGE");
+        else
+            log.info("--------VIDEO");
+        model.addAttribute("ads", result);
+        return "ads/detailAds";
+    }
+
+    @PostMapping("/delete")
+    public String deleteAds(AdsForm form, Model model){
+
+        log.info("delete-------{} {}", form.getId(), form.getAdsId());
+        adsFacade.deleteById(form.getId());
+
+        model.addAttribute("ads", new AdsForm());
+        return "redirect:/ads";
+    }
 
 }

@@ -6,4 +6,8 @@ public interface AdsStore {
     Ads store(Ads initAdRequest);
 
     List<AdsInfo> listAds();
+
+    Ads getAdsById(Long id);
+
+    void deleteById(Long id);
 }

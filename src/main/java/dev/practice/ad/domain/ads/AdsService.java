@@ -6,4 +6,7 @@ public interface AdsService {
     AdsInfo registerAds(AdsCommand command);
     List<AdsInfo> listAds();
 
+    AdsInfo getAdsById(Long id);
+
+    void deleteById(Long id);
 }

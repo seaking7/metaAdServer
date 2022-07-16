@@ -28,5 +28,15 @@ public class AdsServiceImpl implements AdsService {
         return adsStore.listAds();
     }
 
+    @Override
+    public AdsInfo getAdsById(Long id) {
+        Ads adsById = adsStore.getAdsById(id);
+        return new AdsInfo(adsById);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        adsStore.deleteById(id);
+    }
 
 }

@@ -26,4 +26,13 @@ public class AdsFacade {
         List<AdsInfo> result = adsService.listAds();
         return result;
     }
+
+    public AdsInfo getAdsById(Long id) {
+        return adsService.getAdsById(id);
+    }
+
+    public void deleteById(Long id) {
+        adsService.deleteById(id);
+    }
+
 }
