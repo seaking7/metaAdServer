@@ -29,6 +29,8 @@ public class Ads extends AbstractEntity {
     private String adsWidth;
     private String adsHeight;
 
+    @Enumerated(EnumType.STRING)
+    private AdsType adsType;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -40,15 +42,9 @@ public class Ads extends AbstractEntity {
         private final String description;
     }
 
-    @Getter
-    @RequiredArgsConstructor
-    public enum AdsType {
-        IMAGE("이미지"), VIDEO("동영상");
-        private final String description;
-    }
 
     @Builder
-    public Ads(String adsId, String adsName, String materialUrl, String adsWidth, String adsHeight) {
+    public Ads(String adsId, String adsName, String materialUrl, String adsWidth, String adsHeight, AdsType adsType) {
         if (StringUtils.isEmpty(adsId)) throw new InvalidParamException("empty adsId");
 
         this.adsId = adsId;
@@ -56,6 +52,7 @@ public class Ads extends AbstractEntity {
         this.materialUrl = materialUrl;
         this.adsWidth = adsWidth;
         this.adsHeight = adsHeight;
+        this.adsType = adsType;
         this.status = Status.ENABLE;
     }
 

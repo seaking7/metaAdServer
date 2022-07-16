@@ -1,8 +1,10 @@
 package dev.practice.ad.interfaces.web;
 
 import dev.practice.ad.application.AdsFacade;
+import dev.practice.ad.domain.ads.Ads;
 import dev.practice.ad.domain.ads.AdsCommand;
 import dev.practice.ad.domain.ads.AdsInfo;
+import dev.practice.ad.domain.ads.AdsType;
 import dev.practice.ad.domain.app.AppCommand;
 import dev.practice.ad.interfaces.web.form.AdsForm;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +28,10 @@ public class AdsController {
 
     private final AdsFacade adsFacade;
 
+    @ModelAttribute("adsTypes")
+    public AdsType[] apsTypes(){
+        return AdsType.values();
+    }
 
     @GetMapping
     public String listApps(Model model){
@@ -39,7 +46,7 @@ public class AdsController {
 
     @GetMapping("/new")
     public String viewInsertApp(Model model){
-        model.addAttribute("appKey", "adfadfasf");
+        model.addAttribute("ads", new AdsForm());
         return "ads/createAdsForm";
     }
 
@@ -47,7 +54,7 @@ public class AdsController {
     @PostMapping("/new")
     public String insertAds(AdsForm form, Model model){
 
-        log.info("{insertAppId} getAdsId: "+ form.getAdsId());
+        log.info("{insertAppId} getAdsId: {} {}", form.getAdsId(), form.getAdsType());
 
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -56,7 +63,7 @@ public class AdsController {
         log.info("appCommand {}", adsCommand);
         adsFacade.registerAds(adsCommand);
 
-        model.addAttribute("appKey", "adfadfasf");
+        model.addAttribute("ads", new AdsForm());
 
         return "ads/createAdsForm";
     }

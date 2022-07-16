@@ -51,32 +51,32 @@
             <h2>메타버스 광고정책</h2>
             <h5>광고 정책을 조회 및 저장합니다.</h5>
             <div class="container">   <!-- container -->
-                <form action="/strategy" method="post">
+                <form action="/strategy" th:action th:object="${strategyInfo}" method="post">
                     <table>
                         <tbody>
                         <tr>
                             <td width="200"> measuringScreenAreaX : </td><td width="500">
-                            <input type="text" class="form-control" id="measuringScreenAreaX" name="measuringScreenAreaX" th:value="${strategyInfo.measuringScreenAreaX}"></td>
+                            <input type="text" class="form-control" th:field="*{measuringScreenAreaX}"></td>
                         </tr>
                         <tr>
                             <td width="100"> measuringScreenAreaY : </td><td width="600">
-                            <input type="text" class="form-control" id="measuringScreenAreaY" name="measuringScreenAreaY" th:value="${strategyInfo.measuringScreenAreaY}"></td>
+                            <input type="text" class="form-control" th:field="*{measuringScreenAreaY}"></td>
                         </tr>
                         <tr>
                             <td width="100"> ScreenAreaWidth : </td><td width="600">
-                            <input type="text" class="form-control" id="measuringScreenAreaWidth" name="measuringScreenAreaWidth" th:value="${strategyInfo.measuringScreenAreaWidth}"></td>
+                            <input type="text" class="form-control" th:field="*{measuringScreenAreaWidth}"></td>
                         </tr>
                         <tr>
                             <td width="100"> ScreenAreaHeight : </td><td width="600">
-                            <input type="text" class="form-control" id="measuringScreenAreaHeight" name="measuringScreenAreaHeight" th:value="${strategyInfo.measuringScreenAreaHeight}"></td>
+                            <input type="text" class="form-control" th:field="*{measuringScreenAreaHeight}"></td>
                         </tr>
                         <tr>
                             <td width="100"> maxMeasuringCount : </td><td width="600">
-                            <input type="text" class="form-control" id="maxMeasuringCount" name="maxMeasuringCount" th:value="${strategyInfo.maxMeasuringCount}"></td>
+                            <input type="text" class="form-control" th:field="*{maxMeasuringCount}"></td>
                         </tr>
                         <tr>
                             <td width="100"> measuringInterval : </td><td width="600">
-                            <input type="text" class="form-control" id="measuringInterval" name="measuringInterval" th:value="${strategyInfo.measuringInterval}"></td>
+                            <input type="text" class="form-control" th:field="*{measuringInterval}"></td>
                         </tr>
                         <tr>
                             <td width="100"> 최종수정일 : </td><td width="600" th:text="${#temporals.format(strategyInfo.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>

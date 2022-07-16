@@ -2,15 +2,19 @@ package dev.practice.ad.domain.ads;
 
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 public class AdsInfo {
     private final Long id;
-    private final String adsId;
-    private final String adsName;
-    private final String materialUrl;
-    private final String adsWidth;
-    private final String adsHeight;
-    private final String status;
+    private String adsId;
+    private String adsName;
+    private String materialUrl;
+    private String adsWidth;
+    private String adsHeight;
+    private AdsType adsType;
+    private String status;
+    private LocalDateTime updatedAt;
 
     public AdsInfo(Ads adRequest) {
         this.id = adRequest.getId();
@@ -19,6 +23,8 @@ public class AdsInfo {
         this.materialUrl = adRequest.getMaterialUrl();
         this.adsWidth = adRequest.getAdsWidth();
         this.adsHeight = adRequest.getAdsHeight();
+        this.adsType = adRequest.getAdsType();
         this.status = adRequest.getStatus().getDescription();
+        this.updatedAt = adRequest.getUpdatedAt().toLocalDateTime();
     }
 }

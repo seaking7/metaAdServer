@@ -1,6 +1,7 @@
 package dev.practice.ad.interfaces.web.form;
 
 import dev.practice.ad.domain.ads.AdsCommand;
+import dev.practice.ad.domain.ads.AdsType;
 import lombok.Data;
 
 @Data
@@ -10,6 +11,7 @@ public class AdsForm {
     private String materialUrl;
     private String adsWidth;
     private String adsHeight;
+    private AdsType adsType;
 
     public AdsCommand toCommand(){
         return AdsCommand.builder()
@@ -18,6 +20,7 @@ public class AdsForm {
                 .materialUrl(materialUrl)
                 .adsWidth(adsWidth)
                 .adsHeight(adsHeight)
+                .adsType(adsType)
                 .build();
     }
 }

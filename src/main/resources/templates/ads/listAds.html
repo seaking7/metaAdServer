@@ -66,8 +66,9 @@
             <tr>
               <th>ID</th>
               <th>이름</th>
-              <th>소재경로</th>
+              <th>타입</th>
               <th>상태</th>
+              <th>등록일</th>
             </tr>
             </thead>
             <tbody>
@@ -78,8 +79,9 @@
                 <a th:href="@{${ad.materialUrl}}" th:text="${ad.adsId}"/></a>
               </td>
               <td th:text="${ad.adsName}"></td>
-              <td th:text="${ad.materialUrl}"></td>
+              <td th:text="${ad.getAdsType.getDescription()}"></td>
               <td th:text="${ad.status}"></td>
+              <td th:text="${#temporals.format(ad.getUpdatedAt(), 'yyyy-MM-dd')}"></td>
             </tr>
             </form>
             </tbody>

@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class AdRequestInfo {
     private final Long id;
-    private final String uuid;
+    private final String adsId;
     private final String adsName;
     private final String materialUrl;
     private final String adsWidth;

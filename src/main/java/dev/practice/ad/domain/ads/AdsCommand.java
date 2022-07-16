@@ -13,6 +13,7 @@ public class AdsCommand {
     private final String materialUrl;
     private final String adsWidth;
     private final String adsHeight;
+    private final AdsType adsType;
 
     public Ads toEntity() {
         return Ads.builder()
@@ -21,6 +22,7 @@ public class AdsCommand {
                 .materialUrl(materialUrl)
                 .adsWidth(adsWidth)
                 .adsHeight(adsHeight)
+                .adsType(adsType)
                 .build();
     }
 }
