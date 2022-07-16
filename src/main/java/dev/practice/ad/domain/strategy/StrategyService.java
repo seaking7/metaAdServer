@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface StrategyService {
     StrategyInfo storeStrategy(StrategyCommand command);
 
-    Optional<StrategyInfo> listStrategy();
+    StrategyInfo listStrategy();
 }

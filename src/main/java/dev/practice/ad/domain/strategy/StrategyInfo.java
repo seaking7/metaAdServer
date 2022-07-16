@@ -8,15 +8,23 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class StrategyInfo {
-    private String measuringScreenAreaX;
-    private String measuringScreenAreaY;
-    private String measuringScreenAreaWidth;
-    private String measuringScreenAreaHeight;
-    private String maxMeasuringCount;
+    private Integer measuringScreenAreaX;
+    private Integer measuringScreenAreaY;
+    private Integer measuringScreenAreaWidth;
+    private Integer measuringScreenAreaHeight;
+    private Integer maxMeasuringCount;
     private String measuringInterval;
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private String visibleArea;
+    private String pixelGrid;
+    private Integer referenceScreenHandheldX;
+    private Integer referenceScreenHandheldY;
+    private Integer referenceScreenBigX;
+    private Integer referenceScreenBigY;
+    private String screenRelativeLength;
+    private String skewAngle;
     private LocalDateTime updatedAt;
 
     public StrategyInfo(){
@@ -32,6 +40,14 @@ public class StrategyInfo {
         this.waitingInterval = strategy.getWaitingInterval();
         this.viewableTimeImage = strategy.getViewableTimeImage();
         this.viewableTimeVideo = strategy.getViewableTimeVideo();
+        this.visibleArea = strategy.getVisibleArea();
+        this.pixelGrid = strategy.getPixelGrid();
+        this.referenceScreenHandheldX = strategy.getReferenceScreenHandheldX();
+        this.referenceScreenHandheldY = strategy.getReferenceScreenHandheldY();
+        this.referenceScreenBigX = strategy.getReferenceScreenBigX();
+        this.referenceScreenBigY = strategy.getReferenceScreenBigY();
+        this.screenRelativeLength = strategy.getScreenRelativeLength();
+        this.skewAngle = strategy.getSkewAngle();
         this.updatedAt = strategy.getUpdatedAt().toLocalDateTime();
     }
 

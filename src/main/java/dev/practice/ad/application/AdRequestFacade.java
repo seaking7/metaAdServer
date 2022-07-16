@@ -1,27 +1,20 @@
 package dev.practice.ad.application;
 
-import dev.practice.ad.domain.ads.AdsCommand;
-import dev.practice.ad.domain.ads.AdsInfo;
-import dev.practice.ad.domain.ads.AdsService;
+import dev.practice.ad.domain.api.AdInitCommand;
+import dev.practice.ad.domain.api.AdRequestInfo;
+import dev.practice.ad.domain.api.AdRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class AdRequestFacade {
-    private final AdsService adsService;
+    private final AdRequestService adRequestService;
 
-    public AdsInfo registerAds(AdsCommand command) {
-        var adsInfo = adsService.registerAds(command);
-        return adsInfo;
-    }
 
-    public List<AdsInfo> listAds(){
-        List<AdsInfo> result = adsService.listAds();
-        return result;
+    public AdRequestInfo fetchInit(AdInitCommand adInitCommand) {
+        return adRequestService.processInit(adInitCommand);
     }
 }

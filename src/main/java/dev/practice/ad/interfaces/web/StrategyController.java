@@ -25,7 +25,7 @@ public class StrategyController {
 
     @GetMapping
     public String viewStoreStrategy(Model model){
-        StrategyInfo strategyInfo = strategyFacade.listStrategy().orElse(new StrategyInfo());;
+        StrategyInfo strategyInfo = strategyFacade.listStrategy();;
 
         model.addAttribute("strategyInfo", strategyInfo);
         return "strategy/manageStrategy";

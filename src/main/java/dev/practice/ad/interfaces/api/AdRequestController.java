@@ -1,10 +1,23 @@
 package dev.practice.ad.interfaces.api;
 
+import dev.practice.ad.application.AdRequestFacade;
+import dev.practice.ad.domain.api.AdInitCommand;
+import dev.practice.ad.domain.api.AdRequestInfo;
+import dev.practice.ad.interfaces.api.dto.AdInitDto;
+import dev.practice.ad.interfaces.api.dto.AdReportDto;
+import dev.practice.ad.interfaces.api.dto.AdRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.StringWriter;
 import java.util.Map;
 
 @Slf4j
@@ -13,8 +26,10 @@ import java.util.Map;
 @RequestMapping("/meta/v1")
 public class AdRequestController {
 
+    private final AdRequestFacade adRequestFacade;
+
     @GetMapping("/init")
-    public String getInitAd(@ModelAttribute("AdRequestDto.AdInit") AdRequestDto.AdInit adInit){
+    public String getInitAd(@ModelAttribute @Valid AdInitDto adInit){
         log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
         String returnStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -44,8 +59,43 @@ public class AdRequestController {
         return returnStr;
     }
 
+    @GetMapping("/init2")
+    public String getInitAd2(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
+        log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
+                adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
+        AdInitCommand adInitCommand = adInit.toCommand();
+
+        AdRequestInfo adRequestInfo = adRequestFacade.fetchInit(adInitCommand);
+        log.info("result === {}", adRequestInfo.toString());
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(AdRequestInfo.class);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        StringWriter st = new StringWriter();
+
+        marshaller.marshal(adRequestInfo, st);
+        String result = st.toString();
+
+
+        return result;
+    }
+
+
+    @GetMapping("/init3")
+    public AdRequestInfo getInitAd3(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
+        log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
+                adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
+        AdInitCommand adInitCommand = adInit.toCommand();
+
+        AdRequestInfo adRequestInfo = adRequestFacade.fetchInit(adInitCommand);
+        log.info("result === {}", adRequestInfo.toString());
+
+        return adRequestInfo;
+    }
+
     @GetMapping("/request")
-    public String getRequestAd(@ModelAttribute("AdRequestDto.AdRequest") @Valid AdRequestDto.AdRequest request ){
+    public String getRequestAd(@ModelAttribute("AdRequestDto") @Valid AdRequestDto request ){
         log.info("request appId:{}, token:{}, width:{}, height:{} duplicate:{}",
                 request.getAppId(), request.getToken(), request.getWidth(), request.getHeight(), request.getDuplicatedNum());
 
@@ -84,14 +134,13 @@ public class AdRequestController {
                     "    <adUrl>https://taekyung7.s3.ap-northeast-2.amazonaws.com/ads_meterial/uplus_ads_pre.mp4</adUrl>    \n" +
                     "    <adsSeq>3001,3002,3003,3004</adsSeq>\n" +
                     "</adsinfo>";
-
         }
 
         return returnStr;
     }
 
     @GetMapping("/report")
-    public String getReportAd(@ModelAttribute("AdRequestDto.AdReport") @Valid AdRequestDto.AdReport report){
+    public String getReportAd(@ModelAttribute("AdReportDto") @Valid AdReportDto report){
         log.info("report appId:{}, getAdMediaType:{}, getAdMediaType:{}", report.getAppId(), report.getAdMediaType(), report.getAdMediaType());
         String returnStr = "OK";
         return returnStr;
@@ -100,8 +149,6 @@ public class AdRequestController {
     @GetMapping("/test")
     public void testHeader(@RequestHeader Map<String, Object> requestHeader){
         log.info(requestHeader.toString());
-
     }
-
 
 }

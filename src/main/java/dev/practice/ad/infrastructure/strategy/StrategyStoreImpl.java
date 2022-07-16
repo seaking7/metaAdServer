@@ -1,21 +1,14 @@
 package dev.practice.ad.infrastructure.strategy;
 
-import dev.practice.ad.common.exception.InvalidParamException;
-import dev.practice.ad.domain.app.App;
-import dev.practice.ad.domain.app.AppInfo;
-import dev.practice.ad.domain.app.AppStore;
 import dev.practice.ad.domain.strategy.Strategy;
 import dev.practice.ad.domain.strategy.StrategyInfo;
 import dev.practice.ad.domain.strategy.StrategyStore;
-import dev.practice.ad.infrastructure.app.AppRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Slf4j
 @Component
@@ -36,16 +29,27 @@ public class StrategyStoreImpl implements StrategyStore {
         saved.setMeasuringScreenAreaHeight(strategy.getMeasuringScreenAreaHeight());
         saved.setMaxMeasuringCount(strategy.getMaxMeasuringCount());
         saved.setMeasuringInterval(strategy.getMeasuringInterval());
+        saved.setWaitingInterval(strategy.getWaitingInterval());
+        saved.setViewableTimeImage(strategy.getViewableTimeImage());
+        saved.setViewableTimeVideo(strategy.getViewableTimeVideo());
+        saved.setVisibleArea(strategy.getVisibleArea());
+        saved.setPixelGrid(strategy.getPixelGrid());
+        saved.setReferenceScreenHandheldX(strategy.getReferenceScreenHandheldX());
+        saved.setReferenceScreenHandheldY(strategy.getReferenceScreenHandheldY());
+        saved.setReferenceScreenBigX(strategy.getReferenceScreenBigX());
+        saved.setReferenceScreenBigY(strategy.getReferenceScreenBigY());
+        saved.setScreenRelativeLength(strategy.getScreenRelativeLength());
+        saved.setSkewAngle(strategy.getSkewAngle());
 
         return strategyRepository.save(saved);
     }
 
     @Override
-    public Optional<StrategyInfo> listStrategy() {
+    public StrategyInfo listStrategy() {
         return strategyRepository.findAll()
                 .stream()
                 .map(StrategyInfo::new)
-                .findFirst();
+                .findFirst().orElse(new StrategyInfo());
 
 
     }

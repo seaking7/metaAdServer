@@ -19,9 +19,8 @@ public StrategyInfo storeStrategy(StrategyCommand command) {
         return strategyInfo;
     }
 
-    public Optional<StrategyInfo> listStrategy(){
-        Optional<StrategyInfo> result = strategyService.listStrategy();
-        return result;
+    public StrategyInfo listStrategy(){
+        return strategyService.listStrategy();
     }
 
 }

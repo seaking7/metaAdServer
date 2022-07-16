@@ -9,15 +9,23 @@ import lombok.ToString;
 @ToString
 public class StrategyCommand {
 
-    private String measuringScreenAreaX;
-    private String measuringScreenAreaY;
-    private String measuringScreenAreaWidth;
-    private String measuringScreenAreaHeight;
-    private String maxMeasuringCount;
+    private Integer measuringScreenAreaX;
+    private Integer measuringScreenAreaY;
+    private Integer measuringScreenAreaWidth;
+    private Integer measuringScreenAreaHeight;
+    private Integer maxMeasuringCount;
     private String measuringInterval;
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private String visibleArea;
+    private String pixelGrid;
+    private Integer referenceScreenHandheldX;
+    private Integer referenceScreenHandheldY;
+    private Integer referenceScreenBigX;
+    private Integer referenceScreenBigY;
+    private String screenRelativeLength;
+    private String skewAngle;
 
     public Strategy toEntity() {
         return Strategy.builder()
@@ -30,6 +38,14 @@ public class StrategyCommand {
                 .waitingInterval(waitingInterval)
                 .viewableTimeImage(viewableTimeImage)
                 .viewableTimeVideo(viewableTimeVideo)
+                .visibleArea(visibleArea)
+                .pixelGrid(pixelGrid)
+                .referenceScreenHandheldX(referenceScreenHandheldX)
+                .referenceScreenHandheldY(referenceScreenHandheldY)
+                .referenceScreenBigX(referenceScreenBigX)
+                .referenceScreenBigY(referenceScreenBigY)
+                .screenRelativeLength(screenRelativeLength)
+                .skewAngle(skewAngle)
                 .build();
     }
 }

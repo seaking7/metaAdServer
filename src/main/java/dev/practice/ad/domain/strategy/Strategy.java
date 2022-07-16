@@ -20,26 +20,31 @@ public class Strategy extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String measuringScreenAreaX;
-    private String measuringScreenAreaY;
-    private String measuringScreenAreaWidth;
-    private String measuringScreenAreaHeight;
-    private String maxMeasuringCount;
+    private Integer measuringScreenAreaX;
+    private Integer measuringScreenAreaY;
+    private Integer measuringScreenAreaWidth;
+    private Integer measuringScreenAreaHeight;
+    private Integer maxMeasuringCount;
     private String measuringInterval;
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private String visibleArea;
+    private String pixelGrid;
+    private Integer referenceScreenHandheldX;
+    private Integer referenceScreenHandheldY;
+    private Integer referenceScreenBigX;
+    private Integer referenceScreenBigY;
+    private String screenRelativeLength;
+    private String skewAngle;
 
     @Builder
-    public Strategy(String measuringScreenAreaX,
-                    String measuringScreenAreaY,
-                    String measuringScreenAreaWidth,
-                    String measuringScreenAreaHeight,
-                    String maxMeasuringCount,
-                    String measuringInterval,
-                    String waitingInterval,
-                    String viewableTimeImage,
-                    String viewableTimeVideo) {
+    public Strategy(Integer measuringScreenAreaX, Integer measuringScreenAreaY,
+                    Integer measuringScreenAreaWidth, Integer measuringScreenAreaHeight,
+                    Integer maxMeasuringCount, String measuringInterval, String waitingInterval,
+                    String viewableTimeImage, String viewableTimeVideo,
+                    String visibleArea, String pixelGrid, Integer referenceScreenHandheldX, Integer referenceScreenHandheldY,
+                    Integer referenceScreenBigX, Integer referenceScreenBigY, String screenRelativeLength, String skewAngle) {
 //        if (StringUtils.isEmpty(appId)) throw new InvalidParamException("empty appId");
         this.measuringScreenAreaX = measuringScreenAreaX;
         this.measuringScreenAreaY = measuringScreenAreaY;
@@ -50,8 +55,13 @@ public class Strategy extends AbstractEntity {
         this.waitingInterval = waitingInterval;
         this.viewableTimeImage = viewableTimeImage;
         this.viewableTimeVideo = viewableTimeVideo;
-
-
+        this.visibleArea = visibleArea;
+        this.pixelGrid = pixelGrid;
+        this.referenceScreenHandheldX = referenceScreenHandheldX;
+        this.referenceScreenHandheldY = referenceScreenHandheldY;
+        this.referenceScreenBigX = referenceScreenBigX;
+        this.referenceScreenBigY = referenceScreenBigY;
+        this.screenRelativeLength = screenRelativeLength;
+        this.skewAngle = skewAngle;
     }
-
 }

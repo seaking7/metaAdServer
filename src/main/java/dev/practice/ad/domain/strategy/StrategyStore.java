@@ -6,5 +6,5 @@ import java.util.Optional;
 public interface StrategyStore {
     Strategy upsert(Strategy strategy);
 
-    Optional<StrategyInfo> listStrategy();
+    StrategyInfo listStrategy();
 }

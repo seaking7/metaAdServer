@@ -21,7 +21,7 @@ public class StrategyServiceImpl implements StrategyService {
     }
 
     @Override
-    public Optional<StrategyInfo> listStrategy() {
+    public StrategyInfo listStrategy() {
         return strategyStore.listStrategy();
 
     }

@@ -63,11 +63,11 @@
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaY}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> ScreenAreaWidth : </td><td width="600">
+                            <td width="100"> measuringScreenAreaWidth : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaWidth}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> ScreenAreaHeight : </td><td width="600">
+                            <td width="100"> measuringScreenAreaHeight : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaHeight}"></td>
                         </tr>
                         <tr>
@@ -78,6 +78,51 @@
                             <td width="100"> measuringInterval : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringInterval}"></td>
                         </tr>
+                        <tr>
+                            <td width="100"> waitingInterval : </td><td width="600">
+                            <input type="text" class="form-control" th:field="*{waitingInterval}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> viewableTimeImage : </td><td>
+                            <input type="text" class="form-control" th:field="*{viewableTimeImage}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> viewableTimeVideo : </td><td>
+                            <input type="text" class="form-control" th:field="*{viewableTimeVideo}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> visibleArea : </td><td>
+                            <input type="text" class="form-control" th:field="*{visibleArea}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> pixelGrid : </td><td>
+                            <input type="text" class="form-control" th:field="*{pixelGrid}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> referenceScreenHandheldX : </td><td>
+                            <input type="text" class="form-control" th:field="*{referenceScreenHandheldX}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> referenceScreenHandheldY : </td><td>
+                            <input type="text" class="form-control" th:field="*{referenceScreenHandheldY}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> referenceScreenBigX : </td><td>
+                            <input type="text" class="form-control" th:field="*{referenceScreenBigX}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> referenceScreenBigY : </td><td>
+                            <input type="text" class="form-control" th:field="*{referenceScreenBigY}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> screenRelativeLength : </td><td>
+                            <input type="text" class="form-control" th:field="*{screenRelativeLength}"></td>
+                        </tr>
+                        <tr>
+                            <td width="100"> skewAngle : </td><td>
+                            <input type="text" class="form-control" th:field="*{skewAngle}"></td>
+                        </tr>
+
                         <tr>
                             <td width="100"> 최종수정일 : </td><td width="600" th:text="${#temporals.format(strategyInfo.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
                         </tr>

@@ -1,6 +1,5 @@
 package dev.practice.ad.infrastructure.app;
 
-import com.sun.xml.bind.v2.schemagen.xmlschema.Appinfo;
 import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.domain.app.App;
 import dev.practice.ad.domain.app.AppInfo;
