@@ -1,18 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments/header :: header" />
 <body>
 <div class="menu">
-    <div class="jumbotron text-center">
-        <h1>메타버스 POC</h1>
-        <p>광고 관리자</p>
-    </div>
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div>
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
             <ul class="navbar-nav">
@@ -58,23 +49,23 @@
                     <table>
                         <tbody>
                         <tr>
-                            <td width="100"> 애즈아이디 : </td><td width="600">
+                            <td width="100"> 애즈아이디 : </td><td>
                             <input type="text" class="form-control" id="adsId" name="adsId" placeholder="아이디를 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 애즈명 : </td><td width="600">
+                            <td width="100"> 애즈명 : </td><td>
                             <input type="text" class="form-control" id="adsName" name="adsName" placeholder="앱이름을 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 소재경로 : </td><td width="600">
+                            <td width="100"> 소재경로 : </td><td>
                             <input type="text" class="form-control" id="materialUrl" name="materialUrl" placeholder="소재경로를 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 소재넓이 : </td><td width="600">
+                            <td width="100"> 소재넓이 : </td><td>
                             <input type="text" class="form-control" id="adsWidth" name="adsWidth" placeholder="소재넓이를 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td width="100"> 소재높이 : </td><td width="600">
+                            <td width="100"> 소재높이 : </td><td>
                             <input type="text" class="form-control" id="adsHeight" name="adsHeight" placeholder="소재높이를 입력하세요"></td>
                         </tr>
 
@@ -89,8 +80,7 @@
                             </div>
                         </tr>
 
-                        <tr>
-                        </tr>
+                        <tr></tr>
                         <tr></tr>
                         <tr><td></td><td><button class="btn btn-primary" type="submit">등록</button></td></tr>
                         </tbody>
@@ -102,7 +92,7 @@
         </div>
     </div>
 </div> <!-- /container -->
-
+<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>

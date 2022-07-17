@@ -1,18 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments/header :: header" />
 <body>
 <div class="menu">
-    <div class="jumbotron text-center">
-        <h1>메타버스 POC</h1>
-        <p>광고 관리자</p>
-    </div>
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div>
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
             <ul class="navbar-nav">
@@ -33,7 +24,6 @@
     </div>
 </div> <!-- /menu -->
 
-
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-3">
@@ -42,10 +32,6 @@
                     <a class="nav-link active" href="#/strategy">정책</a>
                 </li>
             </ul>
-            <br>
-            <br>
-            <hr class="d-sm-none">
-
         </div>
         <div class="col-sm-8">
             <h2>메타버스 광고정책</h2>
@@ -55,93 +41,92 @@
                     <table>
                         <tbody>
                         <tr>
-                            <td width="200"> measuringScreenAreaX : </td><td width="500">
+                            <td> measuringScreenAreaX : </td><td width="500">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaX}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> measuringScreenAreaY : </td><td width="600">
+                            <td> measuringScreenAreaY : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaY}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> measuringScreenAreaWidth : </td><td width="600">
+                            <td> measuringScreenAreaWidth : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaWidth}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> measuringScreenAreaHeight : </td><td width="600">
+                            <td> measuringScreenAreaHeight : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringScreenAreaHeight}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> maxMeasuringCount : </td><td width="600">
+                            <td> maxMeasuringCount : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{maxMeasuringCount}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> measuringInterval : </td><td width="600">
+                            <td> measuringInterval : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{measuringInterval}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> waitingInterval : </td><td width="600">
+                            <td> waitingInterval : </td><td width="600">
                             <input type="text" class="form-control" th:field="*{waitingInterval}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> viewableTimeImage : </td><td>
+                            <td> viewableTimeImage : </td><td>
                             <input type="text" class="form-control" th:field="*{viewableTimeImage}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> viewableTimeVideo : </td><td>
+                            <td> viewableTimeVideo : </td><td>
                             <input type="text" class="form-control" th:field="*{viewableTimeVideo}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> visibleArea : </td><td>
+                            <td> visibleArea : </td><td>
                             <input type="text" class="form-control" th:field="*{visibleArea}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> pixelGrid : </td><td>
+                            <td> pixelGrid : </td><td>
                             <input type="text" class="form-control" th:field="*{pixelGrid}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> referenceScreenHandheldX : </td><td>
+                            <td> referenceScreenHandheldX : </td><td>
                             <input type="text" class="form-control" th:field="*{referenceScreenHandheldX}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> referenceScreenHandheldY : </td><td>
+                            <td> referenceScreenHandheldY : </td><td>
                             <input type="text" class="form-control" th:field="*{referenceScreenHandheldY}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> referenceScreenBigX : </td><td>
+                            <td> referenceScreenBigX : </td><td>
                             <input type="text" class="form-control" th:field="*{referenceScreenBigX}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> referenceScreenBigY : </td><td>
+                            <td> referenceScreenBigY : </td><td>
                             <input type="text" class="form-control" th:field="*{referenceScreenBigY}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> screenRelativeLength : </td><td>
+                            <td> screenRelativeLength : </td><td>
                             <input type="text" class="form-control" th:field="*{screenRelativeLength}"></td>
                         </tr>
                         <tr>
-                            <td width="100"> skewAngle : </td><td>
+                            <td> skewAngle : </td><td>
                             <input type="text" class="form-control" th:field="*{skewAngle}"></td>
                         </tr>
 
                         <tr>
-                            <td width="100"> 최종수정일 : </td><td width="600" th:text="${#temporals.format(strategyInfo.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            <td> 최종수정일 : </td><td width="600" th:text="${#temporals.format(strategyInfo.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
                         </tr>
                         <tr>
                         </tr>
                         <tr></tr>
                         <tr></tr>
                         <tr></tr>
-                        <tr><td></td><td><button class="btn btn-primary" type="submit">저장</button></td></tr>
+                        <tr><td></td><td><button class="btn btn-outline-primary" type="submit">저장</button></td></tr>
                         </tbody>
                     </table>
                 </form>
             </div> <!-- /container -->
-
             <br>
         </div>
     </div>
 </div> <!-- /container -->
-
+<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>

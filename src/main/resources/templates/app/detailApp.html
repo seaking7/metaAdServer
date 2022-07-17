@@ -1,21 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<head>
-  <title>Hello</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<head th:replace="fragments/header :: header" />
 <div class="menu">
-  <div class="jumbotron text-center">
-    <h1>메타버스 POC</h1>
-    <p>광고 관리자</p>
-  </div>
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
   <div>
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
       <ul class="navbar-nav">
@@ -90,6 +77,6 @@
 	});
 
 </script>
-
-
+<div th:replace="fragments/footer :: footer" />
+</body>
 </html>
