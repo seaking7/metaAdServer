@@ -26,7 +26,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     implementation 'org.modelmapper:modelmapper:3.1.0'
-    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
+    // Java11에서 jaxb 관련 라이브러리 오류로 4개 포함시키고, 버전일치시킴
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+    implementation 'org.glassfish.jaxb:jaxb-core:2.3.0.1'
+    implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
     compileOnly 'org.projectlombok:lombok'
     implementation 'org.flywaydb:flyway-core:7.10.0'
 

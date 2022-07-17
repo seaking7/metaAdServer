@@ -1,5 +1,6 @@
 package dev.practice.ad.domain.api;
 
+import dev.practice.ad.common.util.TokenGenerator;
 import dev.practice.ad.domain.strategy.StrategyInfo;
 import dev.practice.ad.domain.strategy.StrategyStore;
 import lombok.RequiredArgsConstructor;
@@ -17,22 +18,24 @@ import java.util.UUID;
 public class AdRequestServiceImpl implements AdRequestService {
 
     private final StrategyStore strategyStore;
+    private static final int INIT_TOKEN_LENGTH = 40;
 
     @Override
-    public AdRequestInfo processInit(AdInitCommand adInitCommand) {
+    public AdInitInfo processInit(AdInitCommand adInitCommand) {
         StrategyInfo strategyInfo = strategyStore.listStrategy();
 
-        AdRequestInfo adRequestInfo = new AdRequestInfo();
+        AdInitInfo adInitInfo = new AdInitInfo();
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        mapper.map(strategyInfo, adRequestInfo);
+        mapper.map(strategyInfo, adInitInfo);
 
+        adInitInfo.setToken(TokenGenerator.randomCharacter(INIT_TOKEN_LENGTH));
         if(adInitCommand.getUuid() == null || adInitCommand.getUuid().isBlank()){
-            adRequestInfo.setUuid(UUID.randomUUID().toString());
+            adInitInfo.setUuid(UUID.randomUUID().toString());
         } else{
-            adRequestInfo.setUuid(adInitCommand.getUuid());
+            adInitInfo.setUuid(adInitCommand.getUuid());
         }
 
-        return adRequestInfo;
+        return adInitInfo;
     }
 }

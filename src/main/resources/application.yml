@@ -3,6 +3,23 @@ server:
   port: 8081
 
 spring:
+  profiles:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+---
+spring:
+  config:
+    activate:
+      on-profile: local
   lifecycle:
     timeout-per-shutdown-phase: 20s
   jpa:

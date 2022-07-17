@@ -11,10 +11,10 @@ import javax.xml.bind.annotation.*;
 @ToString
 @XmlRootElement(name = "init")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AdRequestInfo {
-    @XmlElement
+public class AdInitInfo {
+    @XmlElement (name = "uuid")
     private String uuid;
-
+    private String token;
     @XmlElement(name = "MeasuringScreenArea_x")
     private Integer measuringScreenAreaX;
     @XmlElement(name = "MeasuringScreenArea_y")

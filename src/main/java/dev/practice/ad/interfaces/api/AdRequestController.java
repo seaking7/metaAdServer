@@ -1,8 +1,9 @@
 package dev.practice.ad.interfaces.api;
 
 import dev.practice.ad.application.AdRequestFacade;
+import dev.practice.ad.common.util.XmlGenerator;
 import dev.practice.ad.domain.api.AdInitCommand;
-import dev.practice.ad.domain.api.AdRequestInfo;
+import dev.practice.ad.domain.api.AdInitInfo;
 import dev.practice.ad.interfaces.api.dto.AdInitDto;
 import dev.practice.ad.interfaces.api.dto.AdReportDto;
 import dev.practice.ad.interfaces.api.dto.AdRequestDto;
@@ -14,9 +15,6 @@ import javax.validation.Valid;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.Map;
 
@@ -65,33 +63,23 @@ public class AdRequestController {
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
         AdInitCommand adInitCommand = adInit.toCommand();
 
-        AdRequestInfo adRequestInfo = adRequestFacade.fetchInit(adInitCommand);
-        log.info("result === {}", adRequestInfo.toString());
+        AdInitInfo adInitInfo = adRequestFacade.fetchInit(adInitCommand);
+        log.info("result === {}", adInitInfo.toString());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(AdRequestInfo.class);
-        Marshaller marshaller = jaxbContext.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        StringWriter st = new StringWriter();
-
-        marshaller.marshal(adRequestInfo, st);
-        String result = st.toString();
-
-
-        return result;
+        return XmlGenerator.marshalObjectToXml(adInitInfo);
     }
 
 
     @GetMapping("/init3")
-    public AdRequestInfo getInitAd3(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
+    public AdInitInfo getInitAd3(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
         log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
         AdInitCommand adInitCommand = adInit.toCommand();
 
-        AdRequestInfo adRequestInfo = adRequestFacade.fetchInit(adInitCommand);
-        log.info("result === {}", adRequestInfo.toString());
+        AdInitInfo adInitInfo = adRequestFacade.fetchInit(adInitCommand);
+        log.info("result === {}", adInitInfo.toString());
 
-        return adRequestInfo;
+        return adInitInfo;
     }
 
     @GetMapping("/request")
