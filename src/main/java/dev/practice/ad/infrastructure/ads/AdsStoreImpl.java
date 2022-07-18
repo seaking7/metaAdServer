@@ -4,6 +4,8 @@ import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.domain.ads.Ads;
 import dev.practice.ad.domain.ads.AdsInfo;
 import dev.practice.ad.domain.ads.AdsStore;
+import dev.practice.ad.domain.ads.AdsType;
+import dev.practice.ad.domain.api.AdRequestInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -42,6 +44,11 @@ public class AdsStoreImpl implements AdsStore {
     @Override
     public void deleteById(Long id) {
         adsRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Ads> findAds(AdsType adsType) {
+        return adsRepository.findAdsByAdsTypeEquals(adsType);
     }
 
 

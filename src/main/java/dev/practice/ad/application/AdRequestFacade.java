@@ -1,8 +1,6 @@
 package dev.practice.ad.application;
 
-import dev.practice.ad.domain.api.AdInitCommand;
-import dev.practice.ad.domain.api.AdInitInfo;
-import dev.practice.ad.domain.api.AdRequestService;
+import dev.practice.ad.domain.api.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,5 +14,9 @@ public class AdRequestFacade {
 
     public AdInitInfo fetchInit(AdInitCommand adInitCommand) {
         return adRequestService.processInit(adInitCommand);
+    }
+
+    public AdRequestInfo requestAd(AdRequestCommand adRequestCommand) {
+        return adRequestService.requestAd(adRequestCommand);
     }
 }

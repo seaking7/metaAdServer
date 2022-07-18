@@ -1,5 +1,7 @@
 package dev.practice.ad.interfaces.api.dto;
 
+import dev.practice.ad.domain.ads.AdsType;
+import dev.practice.ad.domain.api.AdRequestCommand;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,19 +18,25 @@ public class AdRequestDto {
     private String token;
     private String tag;
     private String adRole;
-    private String duplicatedNum;
+    private Integer duplicatedNum;
     private String adMediaType;
     private String unit;
     private String width;
     private String height;
     private String sdkVersion;
 
-//        public AdRequestCommand toCommand() {
-//            return AdRequestCommand.builder()
-//                    .a(partnerName)
-//                    .businessNo(businessNo)
-//                    .email(email)
-//                    .build();
-//        }
+        public AdRequestCommand toCommand() {
+            return AdRequestCommand.builder()
+                    .appId(appId)
+                    .token(token)
+                    .tag(tag)
+                    .adRole(adRole)
+                    .duplicatedNum(duplicatedNum)
+                    .adsType(AdsType.valueOf(adMediaType))
+                    .unit(unit)
+                    .width(width)
+                    .height(height)
+                    .build();
+        }
 
 }

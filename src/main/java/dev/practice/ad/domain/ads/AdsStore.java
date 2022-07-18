@@ -1,5 +1,7 @@
 package dev.practice.ad.domain.ads;
 
+import dev.practice.ad.domain.api.AdRequestInfo;
+
 import java.util.List;
 
 public interface AdsStore {
@@ -10,4 +12,6 @@ public interface AdsStore {
     Ads getAdsById(Long id);
 
     void deleteById(Long id);
+
+    Iterable<Ads> findAds(AdsType adsType);
 }

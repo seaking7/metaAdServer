@@ -1,6 +1,8 @@
 package dev.practice.ad.domain.api;
 
 import dev.practice.ad.common.util.TokenGenerator;
+import dev.practice.ad.domain.ads.Ads;
+import dev.practice.ad.domain.ads.AdsStore;
 import dev.practice.ad.domain.strategy.StrategyInfo;
 import dev.practice.ad.domain.strategy.StrategyStore;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +11,9 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 
 @Slf4j
@@ -18,7 +22,9 @@ import java.util.UUID;
 public class AdRequestServiceImpl implements AdRequestService {
 
     private final StrategyStore strategyStore;
+    private final AdsStore adsStore;
     private static final int INIT_TOKEN_LENGTH = 40;
+    private static int adSeqNum = 1;
 
     @Override
     public AdInitInfo processInit(AdInitCommand adInitCommand) {
@@ -37,5 +43,53 @@ public class AdRequestServiceImpl implements AdRequestService {
         }
 
         return adInitInfo;
+    }
+
+    @Override
+    public AdRequestInfo requestAd(AdRequestCommand adRequestCommand) {
+        log.info(" --requestAd : {}", adRequestCommand.toString());
+
+        Iterable<Ads> ads = adsStore.findAds(adRequestCommand.getAdsType());
+        List<AdRequestInfo> resultList = mapAdsToAdRequestInfo(ads);
+
+        AdRequestInfo result = getRandomAdRequestInfo(resultList);
+        String adsSeq = getSeqString(adRequestCommand);
+        result.setAdsSeq(adsSeq);
+        return result;
+    }
+
+    private List<AdRequestInfo> mapAdsToAdRequestInfo(Iterable<Ads> ads) {
+        List<AdRequestInfo> resultList = new ArrayList<>();
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        AdRequestInfo adRequestInfo = new AdRequestInfo();
+        for (Ads ad : ads) {
+            mapper.map(ad, adRequestInfo);
+            log.info("----map---{}", adRequestInfo.toString());
+            resultList.add(adRequestInfo);
+        }
+        return resultList;
+    }
+
+    private AdRequestInfo getRandomAdRequestInfo(List<AdRequestInfo> resultList) {
+        Random rand = new Random();
+        AdRequestInfo result = resultList.get(rand.nextInt(resultList.size()));
+        return result;
+    }
+
+    private String getSeqString(AdRequestCommand adRequestCommand) {
+        String adsSeq  = "";
+        for(int i = 0; i < adRequestCommand.getDuplicatedNum(); i++){
+            LocalDateTime curTime = LocalDateTime.now();
+            if(!adsSeq.isBlank()) adsSeq += ",";
+            adsSeq += curTime.format(DateTimeFormatter.ofPattern("yyyyMMddhhmm")) + String.format("%05d", adSeqNum++);
+            checkAdseqForReset();
+        }
+        return adsSeq;
+    }
+
+    private synchronized void checkAdseqForReset() {
+        if(adSeqNum > 99999) adSeqNum = 1;
     }
 }

@@ -4,6 +4,8 @@ import dev.practice.ad.application.AdRequestFacade;
 import dev.practice.ad.common.util.XmlGenerator;
 import dev.practice.ad.domain.api.AdInitCommand;
 import dev.practice.ad.domain.api.AdInitInfo;
+import dev.practice.ad.domain.api.AdRequestCommand;
+import dev.practice.ad.domain.api.AdRequestInfo;
 import dev.practice.ad.interfaces.api.dto.AdInitDto;
 import dev.practice.ad.interfaces.api.dto.AdReportDto;
 import dev.practice.ad.interfaces.api.dto.AdRequestDto;
@@ -127,7 +129,19 @@ public class AdRequestController {
         return returnStr;
     }
 
-    @GetMapping("/report")
+    @GetMapping("/request2")
+    public String getRequestAd2(@ModelAttribute("AdRequestDto") @Valid AdRequestDto request ) throws JAXBException {
+        log.info("request appId:{}, token:{}, width:{}, height:{} getDuplicatedNum:{}",
+                request.getAppId(), request.getToken(), request.getWidth(), request.getHeight(), request.getDuplicatedNum());
+        AdRequestCommand adRequestCommand = request.toCommand();
+
+        AdRequestInfo adRequestInfo = adRequestFacade.requestAd(adRequestCommand);
+        log.info("result === {}", adRequestInfo.toString());
+        return XmlGenerator.marshalObjectToXml(adRequestInfo);
+    }
+
+
+        @GetMapping("/report")
     public String getReportAd(@ModelAttribute("AdReportDto") @Valid AdReportDto report){
         log.info("report appId:{}, getAdMediaType:{}, getAdMediaType:{}", report.getAppId(), report.getAdMediaType(), report.getAdMediaType());
         String returnStr = "OK";
