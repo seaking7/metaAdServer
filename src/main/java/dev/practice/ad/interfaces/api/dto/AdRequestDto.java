@@ -18,7 +18,7 @@ public class AdRequestDto {
     private String token;
     private String tag;
     private String adRole;
-    private Integer duplicatedNum;
+    private String duplicatedNum;
     private String adMediaType;
     private String unit;
     private String width;
@@ -31,7 +31,7 @@ public class AdRequestDto {
                     .token(token)
                     .tag(tag)
                     .adRole(adRole)
-                    .duplicatedNum(duplicatedNum)
+                    .duplicatedNum(Integer.valueOf(duplicatedNum))
                     .adsType(AdsType.valueOf(adMediaType))
                     .unit(unit)
                     .width(width)

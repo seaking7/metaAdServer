@@ -61,7 +61,7 @@
                 <a th:href="@{'/ads/'+${ad.id}}" th:text="${ad.adsId}"/></a>
               </td>
               <td th:text="${ad.adsName}"></td>
-              <td th:text="${ad.adsType.description}"></td>
+              <td th:text="${ad.adsType?.description}"></td>
               <td th:text="${#temporals.format(ad.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
             </form>

@@ -12,41 +12,41 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "init")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AdInitInfo {
-    @XmlElement (name = "uuid")
+    @XmlElement
     private String uuid;
     private String token;
-    @XmlElement(name = "MeasuringScreenArea_x")
+    @XmlElement
     private Integer measuringScreenAreaX;
-    @XmlElement(name = "MeasuringScreenArea_y")
+    @XmlElement
     private Integer measuringScreenAreaY;
-    @XmlElement(name = "MeasuringScreenArea_width")
+    @XmlElement
     private Integer measuringScreenAreaWidth;
-    @XmlElement(name = "MeasuringScreenArea_height")
+    @XmlElement
     private Integer measuringScreenAreaHeight;
-    @XmlElement(name = "MaxMeasuringCount")
+    @XmlElement
     private Integer maxMeasuringCount;
-    @XmlElement(name = "MeasuringInterval")
+    @XmlElement
     private String measuringInterval;
-    @XmlElement(name = "WatingInterval")
+    @XmlElement
     private String waitingInterval;
-    @XmlElement(name = "ViewableTimeImage")
+    @XmlElement
     private String viewableTimeImage;
-    @XmlElement(name = "ViewableTimeVideo")
+    @XmlElement
     private String viewableTimeVideo;
-    @XmlElement(name = "VisibleArea")
+    @XmlElement
     private String visibleArea;
-    @XmlElement(name = "PixelGrid")
+    @XmlElement
     private String pixelGrid;
-    @XmlElement(name = "ReferenceScreenHandheld_x")
+    @XmlElement
     private Integer referenceScreenHandheldX;
-    @XmlElement(name = "ReferenceScreenHandheld_y")
+    @XmlElement
     private Integer referenceScreenHandheldY;
-    @XmlElement(name = "ReferenceScreenBig_x")
+    @XmlElement
     private Integer referenceScreenBigX;
-    @XmlElement(name = "ReferenceScreenBig_y")
+    @XmlElement
     private Integer referenceScreenBigY;
-    @XmlElement(name = "ScreenRelativeLength")
+    @XmlElement
     private String screenRelativeLength;
-    @XmlElement(name = "SkewAngle")
+    @XmlElement
     private String skewAngle;
 }

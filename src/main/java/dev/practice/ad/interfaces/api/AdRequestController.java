@@ -28,7 +28,7 @@ public class AdRequestController {
 
     private final AdRequestFacade adRequestFacade;
 
-    @GetMapping("/init")
+    @GetMapping("/init2")
     public String getInitAd(@ModelAttribute @Valid AdInitDto adInit){
         log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
@@ -59,7 +59,7 @@ public class AdRequestController {
         return returnStr;
     }
 
-    @GetMapping("/init2")
+    @GetMapping("/init")
     public String getInitAd2(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
         log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
@@ -84,7 +84,7 @@ public class AdRequestController {
         return adInitInfo;
     }
 
-    @GetMapping("/request")
+    @GetMapping("/request2")
     public String getRequestAd(@ModelAttribute("AdRequestDto") @Valid AdRequestDto request ){
         log.info("request appId:{}, token:{}, width:{}, height:{} duplicate:{}",
                 request.getAppId(), request.getToken(), request.getWidth(), request.getHeight(), request.getDuplicatedNum());
@@ -129,7 +129,7 @@ public class AdRequestController {
         return returnStr;
     }
 
-    @GetMapping("/request2")
+    @GetMapping("/request")
     public String getRequestAd2(@ModelAttribute("AdRequestDto") @Valid AdRequestDto request ) throws JAXBException {
         log.info("request appId:{}, token:{}, width:{}, height:{} getDuplicatedNum:{}",
                 request.getAppId(), request.getToken(), request.getWidth(), request.getHeight(), request.getDuplicatedNum());
@@ -143,7 +143,8 @@ public class AdRequestController {
 
         @GetMapping("/report")
     public String getReportAd(@ModelAttribute("AdReportDto") @Valid AdReportDto report){
-        log.info("report appId:{}, getAdMediaType:{}, getAdMediaType:{}", report.getAppId(), report.getAdMediaType(), report.getAdMediaType());
+        log.info("report adsId:{}, adsSeq:{}, state:{} userIp:{} playTime:{}",
+                report.getAdsId(), report.getAdsSeq(), report.getState(), report.getUserIp(), report.getPlayTime());
         String returnStr = "OK";
         return returnStr;
     }

@@ -52,6 +52,7 @@ public class AdRequestServiceImpl implements AdRequestService {
         Iterable<Ads> ads = adsStore.findAds(adRequestCommand.getAdsType());
         List<AdRequestInfo> resultList = mapAdsToAdRequestInfo(ads);
 
+
         AdRequestInfo result = getRandomAdRequestInfo(resultList);
         String adsSeq = getSeqString(adRequestCommand);
         result.setAdsSeq(adsSeq);
@@ -80,16 +81,17 @@ public class AdRequestServiceImpl implements AdRequestService {
 
     private String getSeqString(AdRequestCommand adRequestCommand) {
         String adsSeq  = "";
+        LocalDateTime curTime = LocalDateTime.now();
         for(int i = 0; i < adRequestCommand.getDuplicatedNum(); i++){
-            LocalDateTime curTime = LocalDateTime.now();
+            String newAdSeq = curTime.format(DateTimeFormatter.ofPattern("yyyyMMddhhmm")) + String.format("%05d", adSeqNum++);
             if(!adsSeq.isBlank()) adsSeq += ",";
-            adsSeq += curTime.format(DateTimeFormatter.ofPattern("yyyyMMddhhmm")) + String.format("%05d", adSeqNum++);
-            checkAdseqForReset();
+            adsSeq += newAdSeq;
         }
+        checkAdSeqForReset();
         return adsSeq;
     }
 
-    private synchronized void checkAdseqForReset() {
-        if(adSeqNum > 99999) adSeqNum = 1;
+    private synchronized void checkAdSeqForReset() {
+        if(adSeqNum > 90000) adSeqNum = 1;  //seq를 5자리만 표기하므로 리셋필요
     }
 }

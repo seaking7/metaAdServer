@@ -10,11 +10,12 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @ToString
 public class AdReportDto {
-    @NotEmpty(message = "appId 는 필수값입니다")
-    private String appId;
-
-    @NotEmpty(message = "uuid 는 필수값입니다")
-    private String uuid;
+    @NotEmpty(message = "adsId 는 필수값입니다")
     private String adsId;
-    private String adMediaType;
+
+    @NotEmpty(message = "adsSeq 는 필수값입니다")
+    private String adsSeq;
+    private String state;
+    private String userIp;
+    private String playTime;
 }

@@ -71,7 +71,7 @@ public class AdsController {
     public String detailAds(@PathVariable Long id, Model model){
         AdsInfo result = adsFacade.getAdsById(id);
 
-        if(result.getAdsType().toString().equals("IMAGE"))
+        if(result.getAdsType().toString().equals("Image"))
             log.info("-------IMAGE");
         else
             log.info("--------VIDEO");
