@@ -90,12 +90,12 @@
       </div> <!-- /container -->
       <br><br>
 
-      <th:block th:if="${ads.getAdsType().toString().equals('IMAGE')}">
+      <th:block th:if="${ads.getAdsType().toString().equals('Image')}">
         <div class="container">
           <img th:src="${ads.materialUrl}" width="480">
         </div>
       </th:block>
-      <th:block th:if="${ads.getAdsType().toString().equals('VIDEO')}">
+      <th:block th:if="${ads.getAdsType().toString().equals('Video')}">
         <div class="container">
           <!--              <video oncontextmenu="return false;" id="myVideo" width="480" controls autoplay>-->
           <video oncontextmenu="return false;" id="myVideo" width="480" controls>

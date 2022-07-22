@@ -22,6 +22,7 @@ public class AdRequestLog {
     private String appId;
     private String adsId;
     private String materialUrl;
+    private String state;
 
 
     @Enumerated(EnumType.STRING)

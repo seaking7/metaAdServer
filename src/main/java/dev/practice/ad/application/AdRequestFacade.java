@@ -1,6 +1,7 @@
 package dev.practice.ad.application;
 
 import com.google.gson.Gson;
+import dev.practice.ad.application.dto.AdReportLog;
 import dev.practice.ad.application.dto.AdRequestLog;
 import dev.practice.ad.domain.api.*;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,18 @@ public class AdRequestFacade {
         return adRequestInfo;
     }
 
+    public void reportAd(AdReportCommand adReportCommand) {
+        Gson gson = new Gson();
+
+        AdReportLog adReportLog = new AdReportLog();
+        adReportLog.setAdSeq(adReportCommand.getAdsSeq());
+        adReportLog.setAdsId(adReportCommand.getAdsId());
+        adReportLog.setState(adReportCommand.getState());
+        adReportLog.setPlayTime(adReportCommand.getPlayTime());
+        adReportLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        reportLogger.info(gson.toJson(adReportLog));
+    }
+
     private void writeLogRequestAd(AdRequestCommand adRequestCommand, AdRequestInfo adRequestInfo) {
         Gson gson = new Gson();
         String[] split = adRequestInfo.getAdsSeq().split(",");
@@ -38,6 +51,7 @@ public class AdRequestFacade {
             adRequestLog.setAppId(adRequestCommand.getAppId());
             adRequestLog.setAdsId(adRequestInfo.getAdsId());
             adRequestLog.setAdsType(adRequestInfo.getAdsType());
+            adRequestLog.setState("2");
             adRequestLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
             reportLogger.info(gson.toJson(adRequestLog));
         }

@@ -1,5 +1,8 @@
 package dev.practice.ad.interfaces.api.dto;
 
+import dev.practice.ad.domain.ads.AdsType;
+import dev.practice.ad.domain.api.AdReportCommand;
+import dev.practice.ad.domain.api.AdRequestCommand;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,4 +21,14 @@ public class AdReportDto {
     private String state;
     private String userIp;
     private String playTime;
+
+
+    public AdReportCommand toCommand() {
+        return AdReportCommand.builder()
+                .adsId(adsId)
+                .adsSeq(adsSeq)
+                .state(state)
+                .playTime(playTime)
+                .build();
+    }
 }

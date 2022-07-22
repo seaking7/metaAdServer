@@ -56,6 +56,7 @@ public class AdRequestServiceImpl implements AdRequestService {
 
 
         AdRequestInfo result = getRandomAdRequestInfo(resultList);
+//        log.info("result requestAd:{}"+ result.toString());
         String adsSeq = getSeqString(adRequestCommand);
         result.setAdsSeq(adsSeq);
         return result;
@@ -66,8 +67,9 @@ public class AdRequestServiceImpl implements AdRequestService {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        AdRequestInfo adRequestInfo = new AdRequestInfo();
+
         for (Ads ad : ads) {
+            AdRequestInfo adRequestInfo = new AdRequestInfo();
             mapper.map(ad, adRequestInfo);
             log.info("----map---{}", adRequestInfo.toString());
             resultList.add(adRequestInfo);
