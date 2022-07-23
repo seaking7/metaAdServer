@@ -1,10 +1,11 @@
 server:
   shutdown: graceful
-  port: 8081
+  port: 8080
 
 spring:
   profiles:
     active: local
+    include: oauth
 
 ---
 spring:
@@ -15,6 +16,13 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://13.124.85.234:3306/metabus?serverTimezone=UTC&characterEncoding=UTF-8
+      username: taekyung
+      password: rlaxorud
+
 ---
 spring:
   config:
@@ -33,12 +41,12 @@ spring:
       jdbc-url: jdbc:mysql://13.125.191.160:3306/order?serverTimezone=UTC&characterEncoding=UTF-8
       username: order-svc
       password: order-pass
-  flyway:
-    user: order-svc
-    password: order-pass
-    schemas: order
-    url: jdbc:mysql://13.125.191.160:3306/order?serverTimezone=UTC&characterEncoding=UTF-8
-    enabled: true
+#  flyway:
+#    user: order-svc
+#    password: order-pass
+#    schemas: order
+#    url: jdbc:mysql://13.125.191.160:3306/order?serverTimezone=UTC&characterEncoding=UTF-8
+#    enabled: true
 
 #  h2:
 #    console:

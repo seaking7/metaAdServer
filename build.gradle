@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
     implementation 'org.modelmapper:modelmapper:3.1.0'
     // Java11에서 jaxb 관련 라이브러리 오류로 4개 포함시키고, 버전일치시킴
@@ -33,7 +34,7 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
 
     compileOnly 'org.projectlombok:lombok'
-    implementation 'org.flywaydb:flyway-core:7.10.0'
+//    implementation 'org.flywaydb:flyway-core:7.10.0'
 
     // MapStruct
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'

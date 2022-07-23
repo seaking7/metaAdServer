@@ -8,6 +8,7 @@ command/
 docker-compose/
 sql/
 logs/
+application-oauth.yml
 
 ### STS ###
 .apt_generated

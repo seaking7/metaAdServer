@@ -46,7 +46,13 @@
             <h2>홈</h2>
             <h5>메타버스 광고POC</h5>
             <div class="container">   <!-- container -->
-                <p>text</p>
+                <p>정책관리를 위해서는 로그인을 해 주시기 바랍니다.</p>
+                </tr>
+                <a th:if="${userName != null}" href="#" th:href="@{/logout}" class="btn btn-danger">logout</a>
+
+                <tr></tr>
+                <a th:if="${userName == null}" href="#" th:href="@{/oauth2/authorization/google}" class="btn btn-primary" role="button">Google Login</a>
+                </tbody>
             </div> <!-- /container -->
             <br>
         </div>
