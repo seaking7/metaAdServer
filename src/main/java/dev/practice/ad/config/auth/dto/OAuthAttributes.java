@@ -30,9 +30,21 @@ public class OAuthAttributes {
         log.info("OAuthAttributes =={} {} {]", registrationId, userNameAttributeName, attributes.toString());
         if("naver".equals(registrationId)) {
             return ofNaver("id", attributes);
+        } else if("github".equals(registrationId)){
+            return ofGithub(userNameAttributeName, attributes);
         }
 
         return ofGoogle(userNameAttributeName, attributes);
+    }
+
+    private static OAuthAttributes ofGithub(String userNameAttributeName, Map<String, Object> attributes) {
+        return OAuthAttributes.builder()
+                .name((String) attributes.get("login"))
+                .email((String) attributes.get("email"))
+                .picture((String) attributes.get("avatar_url"))
+                .attributes(attributes)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {

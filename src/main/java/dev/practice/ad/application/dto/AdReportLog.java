@@ -13,10 +13,13 @@ import javax.persistence.Enumerated;
 @ToString
 public class AdReportLog {
     private String requestTime;
-    private String adSeq;
+    private String appId;
     private String adsId;
+    private String adSeq;
     private String state;
+    private String adsType;
     private String playTime;
+    private String ip;
 
 
 }

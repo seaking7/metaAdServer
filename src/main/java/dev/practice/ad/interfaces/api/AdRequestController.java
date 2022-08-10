@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -41,6 +42,7 @@ public class AdRequestController {
 
     @GetMapping("/init3")
     public AdInitInfo getInitAd3(@ModelAttribute @Valid AdInitDto adInit) throws JAXBException {
+
         log.info("init appId:{}, appKey:{}, macAddress:{}, uuid:{}, sdkVersion:{}",
                 adInit.getAppId(), adInit.getAppKey(), adInit.getMacAddress(), adInit.getUuid(), adInit.getSdkVersion());
         AdInitCommand adInitCommand = adInit.toCommand();
@@ -53,10 +55,11 @@ public class AdRequestController {
 
 
     @GetMapping("/request")
-    public String getRequestAd(@ModelAttribute("AdRequestDto") @Valid AdRequestDto request ) throws JAXBException {
+    public String getRequestAd(@ModelAttribute("AdRequestDto") @Valid AdRequestDto adRequestDto, HttpServletRequest request ) throws JAXBException {
         log.info("request appId:{}, token:{}, width:{}, height:{} getDuplicatedNum:{}",
-                request.getAppId(), request.getToken(), request.getWidth(), request.getHeight(), request.getDuplicatedNum());
-        AdRequestCommand adRequestCommand = request.toCommand();
+                adRequestDto.getAppId(), adRequestDto.getToken(), adRequestDto.getWidth(), adRequestDto.getHeight(), adRequestDto.getDuplicatedNum());
+        adRequestDto.setUserIp(request.getRemoteAddr());
+        AdRequestCommand adRequestCommand = adRequestDto.toCommand();
 
         AdRequestInfo adRequestInfo = adRequestFacade.requestAd(adRequestCommand);
         log.info("result === {}", adRequestInfo.toString());
@@ -65,9 +68,10 @@ public class AdRequestController {
 
 
         @GetMapping("/report")
-    public String getReportAd(@ModelAttribute("AdReportDto") @Valid AdReportDto report){
-        log.info("report adsId:{}, adsSeq:{}, state:{} userIp:{} playTime:{}",
-                report.getAdsId(), report.getAdsSeq(), report.getState(), report.getUserIp(), report.getPlayTime());
+    public String getReportAd(@ModelAttribute("AdReportDto") @Valid AdReportDto report, HttpServletRequest request){
+        log.info("report adsId:{}, adsSeq:{}, state:{} userIp:{} playTime:{}, ip:{}",
+                report.getAdsId(), report.getAdsSeq(), report.getState(), report.getUserIp(), report.getPlayTime(), request.getRemoteAddr());
+        report.setUserIp(request.getRemoteAddr());
         AdReportCommand adReportCommand = report.toCommand();
         adRequestFacade.reportAd(adReportCommand);
 

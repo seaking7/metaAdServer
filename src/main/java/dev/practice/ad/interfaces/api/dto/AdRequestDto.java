@@ -23,6 +23,7 @@ public class AdRequestDto {
     private String unit;
     private String width;
     private String height;
+    private String userIp;
     private String sdkVersion;
 
         public AdRequestCommand toCommand() {
@@ -36,6 +37,7 @@ public class AdRequestDto {
                     .unit(unit)
                     .width(width)
                     .height(height)
+                    .userIp(userIp)
                     .build();
         }
 

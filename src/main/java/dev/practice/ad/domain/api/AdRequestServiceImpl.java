@@ -9,13 +9,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 
 @Slf4j
@@ -87,7 +88,7 @@ public class AdRequestServiceImpl implements AdRequestService {
         String adsSeq  = "";
         LocalDateTime curTime = LocalDateTime.now();
         for(int i = 0; i < adRequestCommand.getDuplicatedNum(); i++){
-            String newAdSeq = curTime.format(DateTimeFormatter.ofPattern("yyyyMMddhhmm")) + String.format("%05d", adSeqNum++);
+            String newAdSeq = curTime.format(DateTimeFormatter.ofPattern("yyyyMMddHHmm")) + String.format("%05d", adSeqNum++);
             if(!adsSeq.isBlank()) adsSeq += ",";
             adsSeq += newAdSeq;
         }

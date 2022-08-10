@@ -34,11 +34,14 @@ public class AdRequestFacade {
         Gson gson = new Gson();
 
         AdReportLog adReportLog = new AdReportLog();
+        adReportLog.setAppId(adReportCommand.getAppId());
         adReportLog.setAdSeq(adReportCommand.getAdsSeq());
         adReportLog.setAdsId(adReportCommand.getAdsId());
         adReportLog.setState(adReportCommand.getState());
+        adReportLog.setAdsType(adReportCommand.getAdMediaType());
         adReportLog.setPlayTime(adReportCommand.getPlayTime());
-        adReportLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        adReportLog.setIp(adReportCommand.getUserIp());
+        adReportLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
         reportLogger.info(gson.toJson(adReportLog));
     }
 
@@ -51,8 +54,9 @@ public class AdRequestFacade {
             adRequestLog.setAppId(adRequestCommand.getAppId());
             adRequestLog.setAdsId(adRequestInfo.getAdsId());
             adRequestLog.setAdsType(adRequestInfo.getAdsType());
-            adRequestLog.setState("2");
-            adRequestLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+            adRequestLog.setState("Respond");
+            adRequestLog.setIp(adRequestCommand.getUserIp());
+            adRequestLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
             reportLogger.info(gson.toJson(adRequestLog));
         }
     }
