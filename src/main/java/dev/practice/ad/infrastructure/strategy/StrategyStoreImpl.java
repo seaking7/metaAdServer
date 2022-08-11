@@ -32,6 +32,8 @@ public class StrategyStoreImpl implements StrategyStore {
         saved.setWaitingInterval(strategy.getWaitingInterval());
         saved.setViewableTimeImage(strategy.getViewableTimeImage());
         saved.setViewableTimeVideo(strategy.getViewableTimeVideo());
+        saved.setCoolDownTime(strategy.getCoolDownTime());
+        saved.setViewingAngle(strategy.getViewingAngle());
         saved.setVisibleArea(strategy.getVisibleArea());
         saved.setPixelGrid(strategy.getPixelGrid());
         saved.setReferenceScreenHandheldX(strategy.getReferenceScreenHandheldX());

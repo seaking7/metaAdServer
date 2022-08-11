@@ -48,7 +48,7 @@
       <!-- Side Nav END -->
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <h2>app 정보</h2>
       <h5>등록된 App 리스트</h5>
       <div class="container">   <!-- container -->
@@ -57,7 +57,7 @@
         <div>
           <table class="table table-bordered">
             <thead class="thead-light">
-            <tr>
+            <tr class="table-primary">
               <th>ID</th>
               <th>이름</th>
               <th>상태</th>
@@ -66,7 +66,7 @@
             </thead>
             <tbody>
             <form action="/app/contents" method="post">
-            <tr th:each="app : ${apps}">
+            <tr class="table-light" th:each="app : ${apps}">
               <td>
                 <a th:href="@{'/app/'+${app.getId()}}" th:text="${app.appId}"/></a>
               </td>

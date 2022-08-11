@@ -39,10 +39,14 @@
             <ul class="nav nav-tabs nav-pills nav-pills-soft flex-column fw-bold gap-2 border-0">
                 <li class="nav-item">
                     <a class="nav-link d-flex mb-0 active" href="/strategy">
-                        <img class="me-2 h-20px fa-fw" src="assets/images/icon/settings-outline-filled.svg" alt="">
+                        <img class="me-2 h-20px fa-fw" src="/assets/images/icon/settings-outline-filled.svg" alt="">
                         <span>정책 </span></a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link d-flex mb-0" href="/strategy/guide">
+                        <img class="me-2 h-20px fa-fw" src="/assets/images/icon/location-map-outline-filled.svg" alt="">
+                        <span>권고 설정 </span></a>
+                </li>
             </ul>
             <!-- Side Nav END -->
 
@@ -137,38 +141,26 @@
                         <!-- Divider -->
                         <hr>
                         <div class="col-12">
-                            <h5 class="card-title mb-0">1초 이상 시청시 (이미지)</h5>
+                            <h5 class="card-title mb-0">최소시청시간</h5>
                         </div>
 
 
                         <div class="col-sm-6">
-                            <label  class="form-label">viewableTimeImage</label>
+                            <label  class="form-label">viewableTimeImage(이미지)</label>
                             <div class="input-group">
                                 <span class="input-group-text border-0"> <i class="bi bi-play-circle-fill text-info"></i> </span>
                                 <input type="text" class="form-control" th:field="*{viewableTimeImage}" placeholder="">
                             </div>
-                            <span class="badge bg-light smaller text-dark"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i> 1초 이상</span>
+                            <span class="badge bg-success smaller"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i> 1초 이상</span>
                         </div>
-
-                        <!-- Divider -->
-                        <hr>
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">2초 이상 시청시 (영상)</h5>
-                        </div>
-
 
                         <div class="col-sm-6">
-                            <label  class="form-label">viewableTimeVideo</label>
+                            <label  class="form-label">viewableTimeVideo(비디오)</label>
                             <div class="input-group">
                                 <span class="input-group-text border-0"> <i class="bi bi-arrow-right-square-fill text-info"></i> </span>
                                 <input type="text" class="form-control" th:field="*{viewableTimeVideo}" placeholder="">
                             </div>
-                            <span class="badge bg-info smaller"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i> 2초 이상</span>
-<!--                            <ul class="nav nav-pills nav-stack small fw-normal">-->
-<!--                                <li class="nav-item">-->
-<!--                                        <i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i>2초 이상-->
-<!--                                </li>-->
-<!--                            </ul>-->
+                            <span class="badge bg-success smaller"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i> 2초 이상</span>
                         </div>
 
 
@@ -178,6 +170,14 @@
                             <h5 class="card-title mb-0">유효노출 이후 cool off 기간</h5>
                         </div>
 
+                        <div class="col-sm-6">
+                            <label class="form-label">coolDownTime</label>
+                            <div class="input-group">
+                                <span class="input-group-text border-0"> <i class="bi bi-fullscreen text-danger"></i> </span>
+                                <input type="text" class="form-control" th:field="*{coolDownTime}" placeholder="">
+                            </div>
+                        </div>
+
 
                         <!-- Divider -->
                         <hr>
@@ -185,6 +185,13 @@
                             <h5 class="card-title mb-0">시청 각도</h5>
                         </div>
 
+                        <div class="col-sm-6">
+                            <label class="form-label">viewingAngle</label>
+                            <div class="input-group">
+                                <span class="input-group-text border-0"> <i class="bi bi-fullscreen text-danger"></i> </span>
+                                <input type="text" class="form-control" th:field="*{viewingAngle}" placeholder="">
+                            </div>
+                        </div>
 
 
                         <!-- Divider -->
@@ -202,14 +209,8 @@
                             <span class="badge bg-info smaller"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i>50% 이상</span>
                         </div>
 
-                        <!-- Divider -->
-                        <hr>
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">노출 비율 측정 pixel 간격</h5>
-                        </div>
-
                         <div class="col-sm-6">
-                            <label  class="form-label">pixelGrid</label>
+                            <label  class="form-label">pixelGrid(노출 비율 측정 pixel 간격)</label>
                             <div class="input-group">
                                 <span class="input-group-text border-0"> <i class="bi bi-arrows-angle-contract text-info"></i> </span>
                                 <input type="text" class="form-control" th:field="*{pixelGrid}" placeholder="">
@@ -272,11 +273,7 @@
                                 <span class="input-group-text border-0"> <i class="bi bi-arrow-up-right-circle-fill text-success"></i> </span>
                                 <input type="text" class="form-control" th:field="*{screenRelativeLength}" placeholder="">
                             </div>
-                            <ul class="nav nav-pills nav-stack small fw-normal">
-                                <li class="nav-item">
-                                        <i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i>화면크기의 1.5% 이상
-                                </li>
-                            </ul>
+                            <span class="badge bg-info smaller"><i class="bi bi-hand-thumbs-up-fill text-warning pe-2"></i>화면크기의 1.5% 이상</span>
                         </div>
 
                         <!-- Divider -->

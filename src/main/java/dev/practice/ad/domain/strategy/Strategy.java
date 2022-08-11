@@ -29,6 +29,8 @@ public class Strategy extends AbstractEntity {
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private Integer coolDownTime;
+    private Integer viewingAngle;
     private String visibleArea;
     private String pixelGrid;
     private Integer referenceScreenHandheldX;
@@ -43,6 +45,7 @@ public class Strategy extends AbstractEntity {
                     Integer measuringScreenAreaWidth, Integer measuringScreenAreaHeight,
                     Integer maxMeasuringCount, String measuringInterval, String waitingInterval,
                     String viewableTimeImage, String viewableTimeVideo,
+                    Integer coolDownTime, Integer viewingAngle,
                     String visibleArea, String pixelGrid, Integer referenceScreenHandheldX, Integer referenceScreenHandheldY,
                     Integer referenceScreenBigX, Integer referenceScreenBigY, String screenRelativeLength, String skewAngle) {
 //        if (StringUtils.isEmpty(appId)) throw new InvalidParamException("empty appId");
@@ -55,6 +58,8 @@ public class Strategy extends AbstractEntity {
         this.waitingInterval = waitingInterval;
         this.viewableTimeImage = viewableTimeImage;
         this.viewableTimeVideo = viewableTimeVideo;
+        this.coolDownTime = coolDownTime;
+        this.viewingAngle = viewingAngle;
         this.visibleArea = visibleArea;
         this.pixelGrid = pixelGrid;
         this.referenceScreenHandheldX = referenceScreenHandheldX;

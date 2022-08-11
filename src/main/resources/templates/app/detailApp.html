@@ -57,12 +57,12 @@
 
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <h2>APP 정보</h2>
       <h5>App Key 내용 조회</h5>
       <div class="container">   <!-- container -->
         <form action="/app/delete" method="post">
-          <table>
+          <table class="table table-light">
             <tbody>
             <tr>
               <td width="100"> 아이디 : </td><td width="600"><input type="text" readonly class="form-control" id="appId" name="appId" th:value="${app.appId}"></td>

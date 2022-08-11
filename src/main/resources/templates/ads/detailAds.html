@@ -55,20 +55,20 @@
 
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <h2>ADS 정보</h2>
       <h5>ADS 내용 조회</h5>
       <div class="container">   <!-- container -->
         <form th:action="@{/ads/delete}" th:object="${ads}" th:method="post">
-          <table>
+          <table class="table table-light">
             <tbody>
-            <tr>
+            <tr class="table-light">
               <td width="100"> 아이디 : </td><td width="600">
               <input type="text" readonly class="form-control" th:field="*{adsId}">
               <input type="hidden" class="form-control" th:field="*{id}">
             </td>
             </tr>
-            <tr>
+            <tr class="table-light">
               <td> 애즈명 : </td><td>
               <input type="text" readonly class="form-control" th:field="*{adsName}"></td>
             </tr>

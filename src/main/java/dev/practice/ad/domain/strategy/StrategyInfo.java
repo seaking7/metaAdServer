@@ -17,6 +17,8 @@ public class StrategyInfo {
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private Integer coolDownTime;
+    private Integer viewingAngle;
     private String visibleArea;
     private String pixelGrid;
     private Integer referenceScreenHandheldX;
@@ -40,6 +42,8 @@ public class StrategyInfo {
         this.waitingInterval = strategy.getWaitingInterval();
         this.viewableTimeImage = strategy.getViewableTimeImage();
         this.viewableTimeVideo = strategy.getViewableTimeVideo();
+        this.coolDownTime = strategy.getCoolDownTime();
+        this.viewingAngle = strategy.getViewingAngle();
         this.visibleArea = strategy.getVisibleArea();
         this.pixelGrid = strategy.getPixelGrid();
         this.referenceScreenHandheldX = strategy.getReferenceScreenHandheldX();

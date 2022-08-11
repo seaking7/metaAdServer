@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
@@ -41,7 +42,7 @@ public class AdRequestFacade {
         adReportLog.setAdsType(adReportCommand.getAdMediaType());
         adReportLog.setPlayTime(adReportCommand.getPlayTime());
         adReportLog.setIp(adReportCommand.getUserIp());
-        adReportLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+        adReportLog.setRequestTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         reportLogger.info(gson.toJson(adReportLog));
     }
 
@@ -56,7 +57,7 @@ public class AdRequestFacade {
             adRequestLog.setAdsType(adRequestInfo.getAdsType());
             adRequestLog.setState("Respond");
             adRequestLog.setIp(adRequestCommand.getUserIp());
-            adRequestLog.setRequestTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+            adRequestLog.setRequestTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
             reportLogger.info(gson.toJson(adRequestLog));
         }
     }

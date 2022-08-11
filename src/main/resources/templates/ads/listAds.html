@@ -47,14 +47,14 @@
         <!-- Side Nav END -->
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <h2>애즈 정보</h2>
       <h5>등록된 애즈 리스트</h5>
       <div class="container">   <!-- container -->
         <div>
           <table class="table table-bordered">
             <thead class="thead-light">
-            <tr>
+            <tr class="table-primary">
               <th>ID</th>
               <th>이름</th>
               <th>타입</th>
@@ -63,7 +63,7 @@
             </thead>
             <tbody>
             <form action="/app/contents" method="post">
-            <tr th:each="ad : ${ads}">
+            <tr class="table-light" th:each="ad : ${ads}">
               <td>
 <!--                <a th:href="@{'/content-service/'+${app.appId}+'/contents'}" th:text="${app.appId}"/></a>-->
 <!--                <a th:href="@{${ad.materialUrl}}" th:text="${ad.adsId}"/></a>-->

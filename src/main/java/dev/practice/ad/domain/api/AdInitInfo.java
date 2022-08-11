@@ -34,6 +34,10 @@ public class AdInitInfo {
     @XmlElement
     private String viewableTimeVideo;
     @XmlElement
+    private Integer coolDownTime;
+    @XmlElement
+    private Integer viewingAngle;
+    @XmlElement
     private String visibleArea;
     @XmlElement
     private String pixelGrid;

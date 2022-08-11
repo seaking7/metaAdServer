@@ -15,6 +15,8 @@ public class StrategyForm {
     private String waitingInterval;
     private String viewableTimeImage;
     private String viewableTimeVideo;
+    private Integer coolDownTime;
+    private Integer viewingAngle;
     private String visibleArea;
     private String pixelGrid;
     private Integer referenceScreenHandheldX;
@@ -35,6 +37,8 @@ public class StrategyForm {
                 .waitingInterval(waitingInterval)
                 .viewableTimeImage(viewableTimeImage)
                 .viewableTimeVideo(viewableTimeVideo)
+                .coolDownTime(coolDownTime)
+                .viewingAngle(viewingAngle)
                 .visibleArea(visibleArea)
                 .pixelGrid(pixelGrid)
                 .referenceScreenHandheldX(referenceScreenHandheldX)

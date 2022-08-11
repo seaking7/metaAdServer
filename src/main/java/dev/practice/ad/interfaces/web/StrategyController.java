@@ -3,6 +3,7 @@ package dev.practice.ad.interfaces.web;
 import dev.practice.ad.application.StrategyFacade;
 import dev.practice.ad.domain.strategy.StrategyCommand;
 import dev.practice.ad.domain.strategy.StrategyInfo;
+import dev.practice.ad.interfaces.web.form.AdsForm;
 import dev.practice.ad.interfaces.web.form.StrategyForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,10 @@ public class StrategyController {
         return "strategy/manageStrategy";
     }
 
+    @GetMapping("/guide")
+    public String guideStrategy(Model model){
+        return "strategy/guideStrategy";
+    }
 
     @PostMapping
     public String storeStrategy(StrategyForm form, Model model){
