@@ -107,26 +107,18 @@
         </div>
       </th:block>
       <th:block th:if="${ads.getAdsType().toString().equals('Video')}">
-        <div class="container">
+        <div class="container player-wrapper overflow-hidden">
           <!--              <video oncontextmenu="return false;" id="myVideo" width="480" controls autoplay>-->
-          <video oncontextmenu="return false;" id="myVideo" width="480" controls>
+          <video class="player-html" oncontextmenu="return false;" id="myVideo" width="480" controls>
             <source th:src="${ads.materialUrl}" type="video/mp4">
           </video>
         </div>
+
       </th:block>
     </div>
   </div>
 </div>
 <div th:replace="fragments/footer :: footer" />
-
-<script>
-
-	/* 삭제 버튼 */
-	$("#delete_btn").on("click", function(e){
-	 alert("delete box!");
-	});
-
-</script>
 
 
 </html>
