@@ -16,8 +16,8 @@ public class AdRequestCommand {
     private Integer duplicatedNum;
     private AdsType adsType;
     private String unit;
-    private String width;
-    private String height;
+    private Integer width;
+    private Integer height;
     private String userIp;
     private String sdkVersion;
 

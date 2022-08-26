@@ -38,7 +38,6 @@ public class Strategy extends AbstractEntity {
     private Integer referenceScreenBigX;
     private Integer referenceScreenBigY;
     private String screenRelativeLength;
-    private String skewAngle;
 
     @Builder
     public Strategy(Integer measuringScreenAreaX, Integer measuringScreenAreaY,
@@ -47,7 +46,7 @@ public class Strategy extends AbstractEntity {
                     String viewableTimeImage, String viewableTimeVideo,
                     Integer coolDownTime, Integer viewingAngle,
                     String visibleArea, String pixelGrid, Integer referenceScreenHandheldX, Integer referenceScreenHandheldY,
-                    Integer referenceScreenBigX, Integer referenceScreenBigY, String screenRelativeLength, String skewAngle) {
+                    Integer referenceScreenBigX, Integer referenceScreenBigY, String screenRelativeLength) {
 //        if (StringUtils.isEmpty(appId)) throw new InvalidParamException("empty appId");
         this.measuringScreenAreaX = measuringScreenAreaX;
         this.measuringScreenAreaY = measuringScreenAreaY;
@@ -67,6 +66,5 @@ public class Strategy extends AbstractEntity {
         this.referenceScreenBigX = referenceScreenBigX;
         this.referenceScreenBigY = referenceScreenBigY;
         this.screenRelativeLength = screenRelativeLength;
-        this.skewAngle = skewAngle;
     }
 }

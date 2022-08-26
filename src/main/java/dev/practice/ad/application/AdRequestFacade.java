@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -38,12 +37,32 @@ public class AdRequestFacade {
         adReportLog.setAppId(adReportCommand.getAppId());
         adReportLog.setAdSeq(adReportCommand.getAdsSeq());
         adReportLog.setAdsId(adReportCommand.getAdsId());
-        adReportLog.setState(adReportCommand.getState());
+        setLogState(adReportCommand, adReportLog);
         adReportLog.setAdsType(adReportCommand.getAdMediaType());
         adReportLog.setPlayTime(adReportCommand.getPlayTime());
         adReportLog.setIp(adReportCommand.getUserIp());
         adReportLog.setRequestTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         reportLogger.info(gson.toJson(adReportLog));
+    }
+
+    private void setLogState(AdReportCommand adReportCommand, AdReportLog adReportLog) {
+        switch (adReportCommand.getState()){
+            case "Started" :
+                adReportLog.setState("시청시작");
+                break;
+            case "Downloaded":
+                adReportLog.setState("다운로드");
+                break;
+            case "Impression":
+                adReportLog.setState("노출");
+                break;
+            case "Ended":
+                adReportLog.setState("시청종료");
+                break;
+            default:
+                adReportLog.setState(adReportCommand.getState());
+                break;
+        }
     }
 
     private void writeLogRequestAd(AdRequestCommand adRequestCommand, AdRequestInfo adRequestInfo) {
@@ -55,7 +74,7 @@ public class AdRequestFacade {
             adRequestLog.setAppId(adRequestCommand.getAppId());
             adRequestLog.setAdsId(adRequestInfo.getAdsId());
             adRequestLog.setAdsType(adRequestInfo.getAdsType());
-            adRequestLog.setState("Respond");
+            adRequestLog.setState("요청");
             adRequestLog.setIp(adRequestCommand.getUserIp());
             adRequestLog.setRequestTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
             reportLogger.info(gson.toJson(adRequestLog));

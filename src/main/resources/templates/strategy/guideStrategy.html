@@ -65,6 +65,7 @@
                             <th>설정값</th>
                             <th>iAB inGame AD Guidelines</th>
                             <th>Description</th>
+                            <th>비고</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,7 +73,8 @@
                             <td>MeasuringScreenAreaX</td>
                             <td>0</td>
                             <td rowspan="4">-</td>
-                            <td rowspan="4">월드 전체 크기을 의미</td>
+                            <td rowspan="4">화면측정 영역크기</td>
+                            <td rowspan="4">U+규격</td>
                         </tr>
                         <tr class="table-light" >
                             <td>MeasuringScreenAreaY</td>
@@ -91,60 +93,70 @@
                             <td>100</td>
                             <td>-</td>
                             <td>월드내 최대 시청 측정 갯수</td>
+                            <td>U+규격</td>
                         </tr>
                         <tr class="table-light" >
-                            <td>WatingInterval</td>
+                            <td>WaitingInterval</td>
                             <td>1</td>
                             <td>-</td>
-                            <td>polilng interval (측정진입전)</td>
+                            <td>polling interval (측정진입전)</td>
+                            <td>U+규격</td>
                         </tr>
                         <tr class="table-light" >
                             <td>MeasuringInterval</td>
                             <td>0.2</td>
                             <td>0.2초 이하</td>
-                            <td>polilng interval (측정진입후)</td>
+                            <td>polling interval (측정진입후)</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>ViewableTimeImage </td>
                             <td>1</td>
                             <td>1초 이상</td>
                             <td>1초 이상 시청시 (이미지)</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>ViewableTimeVideo</td>
                             <td>2</td>
                             <td>2초 이상</td>
                             <td>2초 이상 시청시 (영상)</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>CoolDownTime</td>
                             <td>3</td>
                             <td>기능 사용 권고</td>
                             <td>유효노출 이후 cool off 기간</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>ViewingAngle</td>
                             <td>55</td>
                             <td>55도 이하</td>
                             <td>시청 각도</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>VisibleArea</td>
                             <td>0.5</td>
                             <td>50% 이상</td>
                             <td>노출 비율</td>
+                            <td></td>
                         </tr>
                         <tr class="table-light" >
                             <td>PixelGrid </td>
                             <td>100</td>
                             <td>-</td>
                             <td>노출 비율 측정 pixel 간격</td>
+                            <td>U+규격</td>
                         </tr>
                         <tr class="table-light" >
                             <td>ReferenceScreenHandheldX</td>
                             <td>1,024</td>
                             <td rowspan="2">-</td>
                             <td rowspan="2">표준크기(스마트폰,태블릿)</td>
+                            <td rowspan="2">U+규격</td>
                         </tr>
                         <tr class="table-light" >
                             <td>ReferenceScreenHandheldY</td>
@@ -155,6 +167,7 @@
                             <td>1,536</td>
                             <td rowspan="2">-</td>
                             <td rowspan="2">표준크기(PC, console)</td>
+                            <td rowspan="2">U+규격</td>
                         </tr>
                         <tr class="table-light" >
                             <td> ReferenceScreenBigY</td>
@@ -164,13 +177,8 @@
                             <td>ScreenRelativeLength</td>
                             <td>10%</td>
                             <td>화면크기의 1.5% 이상</td>
-                            <td>원본 픽셀 대비 노출 픽셀 비율</td>
-                        </tr>
-                        <tr class="table-light" >
-                            <td>SkewAngle</td>
-                            <td>45도</td>
-                            <td>-</td>
-                            <td>찌그러짐 측정 각도</td>
+                            <td>원본 크기 대비 노출 크기 비율</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>

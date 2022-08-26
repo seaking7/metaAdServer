@@ -27,7 +27,6 @@ public class StrategyCommand {
     private Integer referenceScreenBigX;
     private Integer referenceScreenBigY;
     private String screenRelativeLength;
-    private String skewAngle;
 
     public Strategy toEntity() {
         return Strategy.builder()
@@ -49,7 +48,6 @@ public class StrategyCommand {
                 .referenceScreenBigX(referenceScreenBigX)
                 .referenceScreenBigY(referenceScreenBigY)
                 .screenRelativeLength(screenRelativeLength)
-                .skewAngle(skewAngle)
                 .build();
     }
 }

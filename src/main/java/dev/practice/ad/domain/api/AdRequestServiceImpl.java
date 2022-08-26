@@ -53,6 +53,9 @@ public class AdRequestServiceImpl implements AdRequestService {
         log.info(" --requestAd : {}", adRequestCommand.toString());
 
         Iterable<Ads> ads = adsStore.findAds(adRequestCommand.getAdsType());
+
+        //to do : width, height 로 filtering
+
         List<AdRequestInfo> resultList = mapAdsToAdRequestInfo(ads);
 
 

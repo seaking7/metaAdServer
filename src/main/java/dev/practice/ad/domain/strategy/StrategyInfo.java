@@ -26,7 +26,6 @@ public class StrategyInfo {
     private Integer referenceScreenBigX;
     private Integer referenceScreenBigY;
     private String screenRelativeLength;
-    private String skewAngle;
     private LocalDateTime updatedAt;
 
     public StrategyInfo(){
@@ -51,7 +50,6 @@ public class StrategyInfo {
         this.referenceScreenBigX = strategy.getReferenceScreenBigX();
         this.referenceScreenBigY = strategy.getReferenceScreenBigY();
         this.screenRelativeLength = strategy.getScreenRelativeLength();
-        this.skewAngle = strategy.getSkewAngle();
         this.updatedAt = strategy.getUpdatedAt().toLocalDateTime();
     }
 

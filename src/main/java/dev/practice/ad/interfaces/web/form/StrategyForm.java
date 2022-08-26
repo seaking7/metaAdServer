@@ -24,7 +24,6 @@ public class StrategyForm {
     private Integer referenceScreenBigX;
     private Integer referenceScreenBigY;
     private String screenRelativeLength;
-    private String skewAngle;
 
     public StrategyCommand toCommand(){
         return StrategyCommand.builder()
@@ -46,7 +45,6 @@ public class StrategyForm {
                 .referenceScreenBigX(referenceScreenBigX)
                 .referenceScreenBigY(referenceScreenBigY)
                 .screenRelativeLength(screenRelativeLength)
-                .skewAngle(skewAngle)
                 .build();
     }
 }

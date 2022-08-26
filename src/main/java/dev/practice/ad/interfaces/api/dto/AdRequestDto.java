@@ -35,8 +35,8 @@ public class AdRequestDto {
                     .duplicatedNum(Integer.valueOf(duplicatedNum))
                     .adsType(AdsType.valueOf(adMediaType))
                     .unit(unit)
-                    .width(width)
-                    .height(height)
+                    .width(Integer.valueOf(width))
+                    .height(Integer.valueOf(height))
                     .userIp(userIp)
                     .build();
         }

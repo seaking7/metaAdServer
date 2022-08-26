@@ -41,7 +41,6 @@ public class StrategyStoreImpl implements StrategyStore {
         saved.setReferenceScreenBigX(strategy.getReferenceScreenBigX());
         saved.setReferenceScreenBigY(strategy.getReferenceScreenBigY());
         saved.setScreenRelativeLength(strategy.getScreenRelativeLength());
-        saved.setSkewAngle(strategy.getSkewAngle());
 
         return strategyRepository.save(saved);
     }
