@@ -10,8 +10,8 @@ public class AdsForm {
     private String adsId;
     private String adsName;
     private String materialUrl;
-    private String adsWidth;
-    private String adsHeight;
+    private Integer adsWidth;
+    private Integer adsHeight;
     private AdsType adsType;
 
     public AdsCommand toCommand(){

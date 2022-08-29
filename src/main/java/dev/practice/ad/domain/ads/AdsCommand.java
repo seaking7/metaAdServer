@@ -11,8 +11,8 @@ public class AdsCommand {
     private final String adsId;
     private final String adsName;
     private final String materialUrl;
-    private final String adsWidth;
-    private final String adsHeight;
+    private final Integer adsWidth;
+    private final Integer adsHeight;
     private final AdsType adsType;
 
     public Ads toEntity() {

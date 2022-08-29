@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 
 @Slf4j
@@ -52,33 +49,24 @@ public class AdRequestServiceImpl implements AdRequestService {
     public AdRequestInfo requestAd(AdRequestCommand adRequestCommand) {
         log.info(" --requestAd : {}", adRequestCommand.toString());
 
-        Iterable<Ads> ads = adsStore.findAds(adRequestCommand.getAdsType());
+        Optional<Ads> ads = adsStore.findAds(adRequestCommand).stream().findFirst();
+        AdRequestInfo result = mapAdsToAdRequestInfo(ads.get());
 
-        //to do : width, height 로 filtering
-
-        List<AdRequestInfo> resultList = mapAdsToAdRequestInfo(ads);
-
-
-        AdRequestInfo result = getRandomAdRequestInfo(resultList);
 //        log.info("result requestAd:{}"+ result.toString());
         String adsSeq = getSeqString(adRequestCommand);
         result.setAdsSeq(adsSeq);
         return result;
     }
 
-    private List<AdRequestInfo> mapAdsToAdRequestInfo(Iterable<Ads> ads) {
-        List<AdRequestInfo> resultList = new ArrayList<>();
+    private AdRequestInfo mapAdsToAdRequestInfo(Ads ads) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
+        AdRequestInfo adRequestInfo = new AdRequestInfo();
+        mapper.map(ads, adRequestInfo);
+        log.info("----map---{}", adRequestInfo.toString());
+        return adRequestInfo;
 
-        for (Ads ad : ads) {
-            AdRequestInfo adRequestInfo = new AdRequestInfo();
-            mapper.map(ad, adRequestInfo);
-            log.info("----map---{}", adRequestInfo.toString());
-            resultList.add(adRequestInfo);
-        }
-        return resultList;
     }
 
     private AdRequestInfo getRandomAdRequestInfo(List<AdRequestInfo> resultList) {

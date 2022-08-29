@@ -26,8 +26,8 @@ public class Ads extends AbstractEntity {
     private String adsName;
     private String materialUrl;
 
-    private String adsWidth;
-    private String adsHeight;
+    private Integer adsWidth;
+    private Integer adsHeight;
 
     @Enumerated(EnumType.STRING)
     private AdsType adsType;
@@ -44,7 +44,7 @@ public class Ads extends AbstractEntity {
 
 
     @Builder
-    public Ads(String adsId, String adsName, String materialUrl, String adsWidth, String adsHeight, AdsType adsType) {
+    public Ads(String adsId, String adsName, String materialUrl, Integer adsWidth, Integer adsHeight, AdsType adsType) {
         if (StringUtils.isEmpty(adsId)) throw new InvalidParamException("empty adsId");
 
         this.adsId = adsId;

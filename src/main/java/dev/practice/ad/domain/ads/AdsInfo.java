@@ -10,8 +10,8 @@ public class AdsInfo {
     private String adsId;
     private String adsName;
     private String materialUrl;
-    private String adsWidth;
-    private String adsHeight;
+    private Integer adsWidth;
+    private Integer adsHeight;
     private AdsType adsType;
     private String status;
     private LocalDateTime updatedAt;

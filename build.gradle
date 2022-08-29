@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-core:2.3.0.1'
     implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'net.bramp.ffmpeg:ffmpeg:0.7.0'
 
     compileOnly 'org.projectlombok:lombok'
 //    implementation 'org.flywaydb:flyway-core:7.10.0'
