@@ -19,10 +19,12 @@ public class AdRequestLog {
     private String adSeq;
     private String materialUrl;
     private String state;
-    private String ip;
-
 
     @Enumerated(EnumType.STRING)
     private AdsType adsType;
+
+    private String ip;
+
+
 
 }

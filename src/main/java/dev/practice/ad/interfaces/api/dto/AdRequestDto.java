@@ -21,8 +21,8 @@ public class AdRequestDto {
     private String duplicatedNum;
     private String adMediaType;
     private String unit;
-    private String width;
-    private String height;
+    private Float width;
+    private Float height;
     private String userIp;
     private String sdkVersion;
 
@@ -35,8 +35,8 @@ public class AdRequestDto {
                     .duplicatedNum(Integer.valueOf(duplicatedNum))
                     .adsType(AdsType.valueOf(adMediaType))
                     .unit(unit)
-                    .width(Integer.valueOf(width))
-                    .height(Integer.valueOf(height))
+                    .width(width)
+                    .height(height)
                     .userIp(userIp)
                     .build();
         }

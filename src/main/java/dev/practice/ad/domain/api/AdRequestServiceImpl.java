@@ -49,8 +49,10 @@ public class AdRequestServiceImpl implements AdRequestService {
     public AdRequestInfo requestAd(AdRequestCommand adRequestCommand) {
         log.info(" --requestAd : {}", adRequestCommand.toString());
 
-        Optional<Ads> ads = adsStore.findAds(adRequestCommand).stream().findFirst();
-        AdRequestInfo result = mapAdsToAdRequestInfo(ads.get());
+        List<Ads> adsList = adsStore.findAdsByRatio(adRequestCommand);
+        List<AdRequestInfo> resultList = mapAdsToAdRequestInfo(adsList);
+
+        AdRequestInfo result = getRandomAdRequestInfo(resultList);
 
 //        log.info("result requestAd:{}"+ result.toString());
         String adsSeq = getSeqString(adRequestCommand);
@@ -58,14 +60,19 @@ public class AdRequestServiceImpl implements AdRequestService {
         return result;
     }
 
-    private AdRequestInfo mapAdsToAdRequestInfo(Ads ads) {
+    private List<AdRequestInfo> mapAdsToAdRequestInfo(List<Ads> ads) {
+        List<AdRequestInfo> resultList = new ArrayList<>();
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        AdRequestInfo adRequestInfo = new AdRequestInfo();
-        mapper.map(ads, adRequestInfo);
-        log.info("----map---{}", adRequestInfo.toString());
-        return adRequestInfo;
+        for(Ads ad : ads){
+            AdRequestInfo adRequestInfo = new AdRequestInfo();
+            mapper.map(ad, adRequestInfo);
+            log.info("----map---{}", adRequestInfo.toString());
+            resultList.add(adRequestInfo);
+        }
+
+        return resultList;
 
     }
 
