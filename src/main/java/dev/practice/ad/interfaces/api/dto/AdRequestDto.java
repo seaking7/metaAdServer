@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -18,7 +19,9 @@ public class AdRequestDto {
     private String token;
     private String tag;
     private String adRole;
+    @NotNull
     private String duplicatedNum;
+    @NotNull
     private String adMediaType;
     private String unit;
     private Float width;
