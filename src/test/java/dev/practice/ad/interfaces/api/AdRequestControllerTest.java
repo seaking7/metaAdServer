@@ -11,7 +11,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 @DisplayName("Api 테스트")
 @AutoConfigureMockMvc
@@ -33,7 +35,9 @@ class AdRequestControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string(containsString("measuringScreenAreaX")))
                 .andExpect(content().string(containsString("viewableTimeImage")))
-                .andExpect(content().string(containsString("pixelGrid")));
+                .andExpect(content().string(containsString("pixelGrid")))
+                .andExpect(xpath("/init/maxMeasuringCount/text()").string(equalTo("100")));
+
     }
 
     @DisplayName("Init API 호출 실패 테스트")
