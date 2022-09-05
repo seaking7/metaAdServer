@@ -55,6 +55,7 @@
             <h5>사용할 애즈를 등록합니다.</h5>
             <div class="container">   <!-- container -->
                 <form action="/ads/new" th:action th:object="${ads}" method="post">
+
                     <table>
                         <tbody>
                         <tr>
@@ -94,6 +95,13 @@
                         <tr><td></td><td><button class="btn btn-primary" type="submit">등록</button></td></tr>
                         </tbody>
                     </table>
+
+                    <div th:if="${error_msg != null}">
+                        <p></p>
+                        <h4 class="field-error text-danger"  th:text="${error_msg}">글로벌 오류 메시지</h4>
+                        <p></p>
+                    </div>
+
                 </form>
             </div> <!-- /container -->
 

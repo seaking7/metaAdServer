@@ -14,6 +14,8 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,9 +52,16 @@ public class AdsController {
 
 
     @PostMapping("/new")
-    public String insertAds(AdsForm form, Model model){
+    public String insertAds(@Validated @ModelAttribute AdsForm form, BindingResult bindingResult, Model model){
 
         log.info("{insertAppId} getAdsId: {} {}", form.getAdsId(), form.getAdsType());
+
+        if(bindingResult.hasErrors()){
+            log.info("error={}", bindingResult);
+            model.addAttribute("ads", new AdsForm());
+            model.addAttribute("error_msg", "입력값을 확인해주세요");
+            return "ads/createAdsForm";
+        }
 
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -71,10 +80,6 @@ public class AdsController {
     public String detailAds(@PathVariable Long id, Model model){
         AdsInfo result = adsFacade.getAdsById(id);
 
-        if(result.getAdsType().toString().equals("Image"))
-            log.info("-------IMAGE");
-        else
-            log.info("--------VIDEO");
         model.addAttribute("ads", result);
         return "ads/detailAds";
     }
