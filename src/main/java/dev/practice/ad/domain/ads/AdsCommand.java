@@ -8,6 +8,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class AdsCommand {
+    private final Long id;
     private final String adsId;
     private final String adsName;
     private final String materialUrl;

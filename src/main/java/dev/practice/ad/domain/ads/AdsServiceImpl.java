@@ -39,4 +39,11 @@ public class AdsServiceImpl implements AdsService {
         adsStore.deleteById(id);
     }
 
+    @Override
+    public AdsInfo updateAds(AdsCommand adsCommand) {
+        Ads ads = adsStore.updateAds(adsCommand);
+        return new AdsInfo(ads);
+
+    }
+
 }

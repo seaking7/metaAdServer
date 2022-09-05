@@ -81,13 +81,33 @@ public class AdsController {
     }
 
     @PostMapping("/delete")
-    public String deleteAds(AdsForm form, Model model){
+    public String deleteAds(@ModelAttribute("ads") AdsForm form, Model model){
 
-        log.info("delete-------{} {}", form.getId(), form.getAdsId());
+        log.info("deleteAds :{}", form.getId());
         adsFacade.deleteById(form.getId());
 
         model.addAttribute("ads", new AdsForm());
         return "redirect:/ads";
     }
 
+    @PostMapping("/update")
+    public String updateAds(@Validated @ModelAttribute("ads") AdsForm form, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+            log.info("error={}", bindingResult);
+            model.addAttribute("error_msg", "입력값을 확인해주세요");
+            return "ads/detailAds";
+        }
+
+        log.info("updateAds :{}", form.getId());
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        AdsCommand adsCommand = form.toCommand();
+        log.info("appCommand {}", adsCommand);
+        AdsInfo result = adsFacade.updateAds(adsCommand);
+        model.addAttribute("ads", result);
+
+        return "ads/detailAds";
+    }
 }

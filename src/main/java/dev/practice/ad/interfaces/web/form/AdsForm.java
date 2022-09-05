@@ -21,6 +21,7 @@ public class AdsForm {
 
     public AdsCommand toCommand(){
         return AdsCommand.builder()
+                .id(id)
                 .adsId(adsId)
                 .adsName(adsName)
                 .materialUrl(materialUrl)

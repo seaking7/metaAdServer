@@ -3,10 +3,7 @@ package dev.practice.ad.domain.ads;
 import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.common.util.TokenGenerator;
 import dev.practice.ad.domain.AbstractEntity;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,6 +11,7 @@ import javax.persistence.*;
 
 @Slf4j
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "m_ads")

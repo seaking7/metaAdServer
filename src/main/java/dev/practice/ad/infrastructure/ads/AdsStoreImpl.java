@@ -2,6 +2,7 @@ package dev.practice.ad.infrastructure.ads;
 
 import dev.practice.ad.common.exception.InvalidParamException;
 import dev.practice.ad.domain.ads.Ads;
+import dev.practice.ad.domain.ads.AdsCommand;
 import dev.practice.ad.domain.ads.AdsInfo;
 import dev.practice.ad.domain.ads.AdsStore;
 import dev.practice.ad.domain.api.AdRequestCommand;
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -51,6 +53,18 @@ public class AdsStoreImpl implements AdsStore {
                 .stream().findFirst().get();
         log.info("findAds : {} {} {}", findAds.getAdsId(), findAds.getAdsWidth(), findAds.getAdsHeight());
         return adsRepository.findByAdsTypeEqualsMatchRatioAdsId(findAds.getAdsType(), findAds.getAdsId());
+    }
+
+    @Override
+    public Ads updateAds(AdsCommand adsCommand) {
+        Ads byId = adsRepository.findById(adsCommand.getId()).get();
+        byId.setAdsName(adsCommand.getAdsName());
+        byId.setMaterialUrl(adsCommand.getMaterialUrl());
+        byId.setAdsWidth(adsCommand.getAdsWidth());
+        byId.setAdsHeight(adsCommand.getAdsHeight());
+        byId.setAdsType(adsCommand.getAdsType());
+        adsRepository.save(byId);
+        return byId;
     }
 
 

@@ -14,4 +14,6 @@ public interface AdsStore {
     void deleteById(Long id);
 
     List<Ads> findAdsByRatio(AdRequestCommand adRequestCommand);
+
+    Ads updateAds(AdsCommand adsCommand);
 }

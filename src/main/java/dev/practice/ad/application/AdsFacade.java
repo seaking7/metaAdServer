@@ -35,4 +35,7 @@ public class AdsFacade {
         adsService.deleteById(id);
     }
 
+    public AdsInfo updateAds(AdsCommand adsCommand) {
+        return adsService.updateAds(adsCommand);
+    }
 }

@@ -59,7 +59,7 @@
       <h2>ADS 정보</h2>
       <h5>ADS 내용 조회</h5>
       <div class="container">   <!-- container -->
-        <form th:action="@{/ads/delete}" th:object="${ads}" th:method="post">
+        <form th:object="${ads}" th:method="post">
           <table class="table table-light">
             <tbody>
             <tr class="table-light">
@@ -70,31 +70,51 @@
             </tr>
             <tr class="table-light">
               <td> 애즈명 : </td><td>
-              <input type="text" readonly class="form-control" th:field="*{adsName}"></td>
+              <input type="text" class="form-control" th:field="*{adsName}"></td>
             </tr>
 
             <tr>
               <td width="100"> 소재경로 : </td><td>
-              <input type="text" readonly class="form-control" th:value="${ads.materialUrl}" ></td>
+              <input type="text" class="form-control" th:field="*{materialUrl}" ></td>
             </tr>
             <tr>
               <td width="100"> 소재넓이 : </td><td>
-              <input type="text" readonly class="form-control" th:field="*{adsWidth}"></td>
+              <input type="text" class="form-control" th:field="*{adsWidth}"></td>
             </tr>
             <tr>
               <td width="100"> 소재높이 : </td><td>
-              <input type="text" readonly class="form-control" th:field="*{adsHeight}" ></td>
+              <input type="text" class="form-control" th:field="*{adsHeight}" ></td>
             </tr>
+<!--            <tr>-->
+<!--              <td width="100"> 타입 : </td><td>-->
+<!--              <input type="text" class="form-control" th:value="${ads.adsType?.description}" ></td>-->
+<!--            </tr>-->
+            <!-- radio button -->
             <tr>
-              <td width="100"> 타입 : </td><td>
-              <input type="text" readonly class="form-control" th:value="${ads.adsType?.description}" ></td>
+              <td width="100"> 소재타입 : </td><td width="600">
+              <div th:each="type : ${adsTypes}" class="form-check form-check-inline">
+                <input type="radio" th:field="*{adsType}" th:value="${type.name()}" class="form-check-input">
+                <label th:for="${#ids.prev('adsType')}" th:text="${type.description}" class="form-check-label">
+                  이미지
+                </label>
+              </div>
             </tr>
-
             </tbody>
           </table>
 
-
-          <button class="btn btn-primary" type="submit">삭제</button>
+          <div class="col-sm-12">
+            <label  class="form-label">최종수정일</label>
+            <div class="input-group">
+              <span th:text="${#temporals.format(ads.getUpdatedAt(), 'yyyy-MM-dd HH:mm:ss')}" ></span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-4 justify-content-start">
+              <button class="btn btn-warning" formaction="/ads/delete" type="submit">삭제</button>
+              <button class="btn btn-primary" formaction="/ads/update" type="submit">수정</button>
+            </div>
+          </div>
         </form>
 
 

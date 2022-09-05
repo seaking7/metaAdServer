@@ -9,4 +9,6 @@ public interface AdsService {
     AdsInfo getAdsById(Long id);
 
     void deleteById(Long id);
+
+    AdsInfo updateAds(AdsCommand adsCommand);
 }

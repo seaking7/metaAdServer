@@ -25,4 +25,13 @@ public class HomeController {
         return "home";
     }
 
+
+    @RequestMapping("/error-page/404")
+    public String errorPage404(Model model) {
+        return "user/404";
+    }
+    @RequestMapping("/error-page/500")
+    public String errorPage500(Model model) {
+        return "user/500";
+    }
 }
