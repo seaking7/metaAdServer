@@ -34,8 +34,8 @@ public class AdsController {
     }
 
     @GetMapping
-    public String listApps(Model model){
-        log.info("{listApps} list app ");
+    public String listAds(Model model){
+        log.info("{listAds} list ads ");
         List<AdsInfo> result = adsFacade.listAds();
         for (AdsInfo adsInfo : result) {
             log.info(adsInfo.toString());
@@ -52,13 +52,11 @@ public class AdsController {
 
 
     @PostMapping("/new")
-    public String insertAds(@Validated @ModelAttribute AdsForm form, BindingResult bindingResult, Model model){
-
-        log.info("{insertAppId} getAdsId: {} {}", form.getAdsId(), form.getAdsType());
+    public String insertAds(@Validated @ModelAttribute("ads") AdsForm form, BindingResult bindingResult, Model model){
+        log.info("{insertAds} getAdsId: {} {}", form.getAdsId(), form.getAdsType());
 
         if(bindingResult.hasErrors()){
             log.info("error={}", bindingResult);
-            model.addAttribute("ads", new AdsForm());
             model.addAttribute("error_msg", "입력값을 확인해주세요");
             return "ads/createAdsForm";
         }
@@ -69,8 +67,6 @@ public class AdsController {
         AdsCommand adsCommand = form.toCommand();
         log.info("appCommand {}", adsCommand);
         adsFacade.registerAds(adsCommand);
-
-        model.addAttribute("ads", new AdsForm());
 
         return "ads/createAdsForm";
     }

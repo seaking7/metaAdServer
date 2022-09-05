@@ -64,7 +64,8 @@ class AdRequestControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string(containsString("adsId")))
                 .andExpect(content().string(containsString("adUrl")))
-                .andExpect(content().string(containsString("adMediaType")));
+                .andExpect(content().string(containsString("adMediaType")))
+                .andExpect(content().string(containsString("adsSeq")));
     }
 
     @DisplayName("Report API 호출 테스트")
