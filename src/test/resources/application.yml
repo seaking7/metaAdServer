@@ -4,11 +4,8 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: test
     include: oauth
-
-logging:
-  config: classpath:logback-local.xml
 
 ---
 spring:
@@ -23,25 +20,25 @@ spring:
   datasource:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://1.1.1.1:3306/metaDev?serverTimezone=UTC&characterEncoding=UTF-8
-      username: user
-      password: pass
+      jdbc-url: jdbc:mysql://3.35.216.167:3306/metaDev?serverTimezone=UTC&characterEncoding=UTF-8
+      username: meta
+      password: Rlaxorud123!
+
 
 ---
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: test
   lifecycle:
     timeout-per-shutdown-phase: 20s
   jpa:
     show-sql: true
-    #    database-platform: mysql
     hibernate:
       ddl-auto: none
   datasource:
     hikari:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://1.1.1.1:3306/metaDev?serverTimezone=UTC&characterEncoding=UTF-8
-      username: user
-      password: pass
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+      username: sa
+      password:

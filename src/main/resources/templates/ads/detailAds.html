@@ -85,11 +85,6 @@
               <td width="100"> 소재높이 : </td><td>
               <input type="text" class="form-control" th:field="*{adsHeight}" ></td>
             </tr>
-<!--            <tr>-->
-<!--              <td width="100"> 타입 : </td><td>-->
-<!--              <input type="text" class="form-control" th:value="${ads.adsType?.description}" ></td>-->
-<!--            </tr>-->
-            <!-- radio button -->
             <tr>
               <td width="100"> 소재타입 : </td><td width="600">
               <div th:each="type : ${adsTypes}" class="form-check form-check-inline">
@@ -121,12 +116,12 @@
       </div> <!-- /container -->
       <br><br>
 
-      <th:block th:if="${ads.getAdsType().toString().equals('Image')}">
+      <th:block th:if="${ads?.getAdsType()?.toString()?.equals('Image')}">
         <div class="container">
           <img th:src="${ads.materialUrl}" width="480">
         </div>
       </th:block>
-      <th:block th:if="${ads.getAdsType().toString().equals('Video')}">
+      <th:block th:if="${ads?.getAdsType()?.toString()?.equals('Video')}">
         <div class="container player-wrapper overflow-hidden">
           <!--              <video oncontextmenu="return false;" id="myVideo" width="480" controls autoplay>-->
           <video class="player-html" oncontextmenu="return false;" id="myVideo" width="480" controls>
