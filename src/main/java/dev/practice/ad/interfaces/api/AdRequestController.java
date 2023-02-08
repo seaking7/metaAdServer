@@ -20,6 +20,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
 @RequestMapping("/meta/v1")
 public class AdRequestController {
